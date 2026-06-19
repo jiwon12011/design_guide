@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디자인 레퍼런스 · 폰트 · 색상 · 자간/행간</title>
+
+<!-- 한글 폰트 (Pretendard, SUIT via jsDelivr) -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" />
+<link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@latest/packages/wanted-sans/fonts/webfonts/static/split/WantedSans.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/adrinerDP/font-kopubworld/css/dotum.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquareNeo@1.0/nanumsquareneo.css" />
+
+<!-- Google Fonts: 한글 + 영문 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600&family=Nanum+Gothic&family=Nanum+Myeongjo&family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Dodum&family=Jua&family=IBM+Plex+Sans+KR:wght@400;500;700&family=Gothic+A1:wght@400;600;800&family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;600;800&family=Poppins:wght@400;500;700&family=Playfair+Display:wght@500;700&family=Lora:wght@400;600&family=Work+Sans:wght@400;600&family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;600&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&family=Noto+Serif:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* noonnu/jsDelivr 호스팅 한글 폰트 */
+  @font-face { font-family:'GmarketSans'; font-weight:500; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); }
+  @font-face { font-family:'GmarketSans'; font-weight:700; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); }
+  @font-face { font-family:'SCoreDream'; font-weight:400; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); }
+  @font-face { font-family:'SCoreDream'; font-weight:700; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); }
+  @font-face { font-family:'Freesentation'; font-weight:400; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2'); }
+  @font-face { font-family:'Freesentation'; font-weight:700; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2'); }
+  :root {
+    --bg: #0b0c10;
+    --surface: #15171e;
+    --surface-2: #1c1f28;
+    --surface-3: #232733;
+    --border: #262a35;
+    --border-soft: rgba(255,255,255,.05);
+    --text: #edeff4;
+    --text-dim: #8b93a3;
+    --accent: #818cf8;
+    --accent-2: #c084fc;
+    --accent-soft: rgba(129,140,248,.16);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.5);
+    --shadow-lg: 0 1px 2px rgba(0,0,0,.4), 0 24px 48px -16px rgba(0,0,0,.6);
+    --ui-font: "Pretendard", -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--ui-font);
+    background:
+      radial-gradient(1100px 480px at 78% -8%, rgba(129,140,248,.10), transparent 60%),
+      radial-gradient(900px 420px at 8% 4%, rgba(192,132,252,.07), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -.005em;
+  }
+  ::selection { background: rgba(129,140,248,.35); }
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,12,16,.72);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 18px 28px 0;
+  }
+  .top-inner { max-width: 1160px; margin: 0 auto; }
+  .top h1 {
+    font-size: 20px; font-weight: 800; letter-spacing: -.03em;
+    background: linear-gradient(92deg, #fff, #c9cdf7);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .top p { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
+  .searchbar {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 10px 17px; margin-top: 16px; max-width: 540px;
+    transition: .18s; box-shadow: inset 0 1px 0 var(--border-soft);
+  }
+  .searchbar:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .searchbar .ico { font-size: 14px; opacity: .65; }
+  .searchbar input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--text); font-family: var(--ui-font); font-size: 14px;
+  }
+  .searchbar input::placeholder { color: var(--text-dim); }
+  .searchbar #searchClear {
+    background: var(--surface-3); border: none; color: var(--text-dim); cursor: pointer;
+    font-size: 12px; width: 22px; height: 22px; border-radius: 50%; display: none; align-items: center; justify-content: center;
+  }
+  .searchbar #searchClear:hover { color: var(--text); }
+  .searchbar.has-text #searchClear { display: flex; }
+  .res-group { margin-bottom: 34px; }
+  .res-group h2 {
+    font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 14px;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .res-empty { color: var(--text-dim); font-size: 14px; padding: 60px 0; text-align: center; }
+  .res-empty b { color: var(--text); }
+  mark { background: var(--accent-soft); color: #d6dbff; border-radius: 4px; padding: 0 3px; }
+  nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 16px; }
+  nav.tabs button {
+    font-family: var(--ui-font); font-size: 14px; font-weight: 600;
+    color: var(--text-dim); background: transparent;
+    border: none; border-radius: 10px 10px 0 0;
+    padding: 11px 16px 14px; cursor: pointer; transition: .15s; position: relative;
+  }
+  nav.tabs button:hover { color: var(--text); }
+  nav.tabs button.active { color: #fff; }
+  nav.tabs button.active::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2.5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 3px;
+  }
+  main { max-width: 1160px; margin: 0 auto; padding: 36px 28px 140px; }
+  .panel { display: none; animation: fade .3s cubic-bezier(.2,.7,.3,1); }
+  .panel.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin: 38px 0 16px; color: var(--text-dim); }
+  .section-title:first-child { margin-top: 0; }
+  .section-title.solo { color: var(--text); font-size: 16px; letter-spacing: -.01em; text-transform: none; }
+  .lead { color: var(--text-dim); font-size: 14.5px; margin-bottom: 14px; }
+
+  /* filters */
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .chip {
+    font-family: var(--ui-font); font-size: 13px; font-weight: 500; color: var(--text-dim);
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 7px 15px; cursor: pointer; transition: .15s;
+  }
+  .chip:hover { color: var(--text); border-color: #353a47; }
+  .chip.active { color: #fff; background: linear-gradient(180deg, rgba(129,140,248,.28), rgba(129,140,248,.16)); border-color: var(--accent); }
+
+  /* preview text input */
+  .preview-input {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 13px 17px; margin-bottom: 18px; box-shadow: var(--shadow);
+  }
+  .preview-input:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .preview-input .ico { font-size: 16px; opacity: .85; }
+  .preview-input input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--ui-font); font-size: 15px; }
+  .preview-input input::placeholder { color: var(--text-dim); }
+  .preview-input button {
+    font-family: var(--ui-font); font-size: 13px; font-weight: 500; color: var(--text-dim);
+    background: var(--surface-3); border: 1px solid var(--border); border-radius: 9px;
+    padding: 7px 13px; cursor: pointer; white-space: nowrap; transition: .15s;
+  }
+  .preview-input button:hover { color: var(--text); border-color: var(--accent); }
+
+  /* font cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; }
+  .tag.np { color: #ffcf8b; background: rgba(255,180,80,.14); }
+  .card.isnp .preview .big { opacity: .5; font-style: italic; }
+  .npnote { font-size: 11.5px; color: var(--text-dim); margin: -4px 0 10px; }
+  .card .use a { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .card {
+    background: linear-gradient(180deg, var(--surface), var(--surface));
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 22px;
+    transition: .2s cubic-bezier(.2,.7,.3,1); box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-soft), transparent);
+  }
+  .card:hover { border-color: #3a4252; transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .card .name { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .card .tags { display: flex; gap: 5px; margin-left: auto; }
+  .tag { font-size: 10.5px; font-weight: 500; color: var(--text-dim); background: var(--surface-3); border-radius: 6px; padding: 3px 8px; letter-spacing: .01em; }
+  .card .preview { margin: 16px 0 12px; line-height: 1.25; }
+  .card .preview .big { font-size: 32px; letter-spacing: -.02em; color: #fff; }
+  .card .preview .small { font-size: 15px; color: var(--text-dim); margin-top: 6px; }
+  .card .use { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .card .use b { color: var(--text); font-weight: 600; }
+
+  /* pairing */
+  .pair {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 26px 28px; margin-bottom: 18px; box-shadow: var(--shadow); transition: .2s;
+  }
+  .pair:hover { border-color: #3a4252; }
+  .pair .meta { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pair .meta span { background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; padding: 4px 10px; }
+  .pair .meta span b { color: var(--accent); font-weight: 700; }
+  .pair .ph { font-size: 30px; line-height: 1.2; letter-spacing: -.025em; margin-bottom: 10px; color: #fff; }
+  .pair .pb { font-size: 15px; line-height: 1.75; color: #c2c8d4; max-width: 62ch; }
+
+  /* colors */
+  .palette { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; box-shadow: var(--shadow); transition: .2s; }
+  .palette:hover { border-color: #3a4252; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .palette .swatches { display: flex; height: 104px; }
+  .palette .sw { flex: 1; cursor: pointer; position: relative; transition: flex .25s cubic-bezier(.2,.7,.3,1); }
+  .palette .sw:hover { flex: 1.5; }
+  .palette .sw span {
+    position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-size: 11px; font-weight: 700;
+    color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); opacity: 0; transition: .15s; letter-spacing: .02em;
+  }
+  .palette .sw:hover span { opacity: 1; }
+  .palette .info { padding: 15px 18px; }
+  .palette .info .name { font-size: 14px; font-weight: 600; }
+  .palette .info .desc { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; font-size: 14px; box-shadow: var(--shadow); margin-bottom: 4px; }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  th { background: var(--surface-2); font-weight: 600; font-size: 12px; color: var(--text-dim); letter-spacing: .03em; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr, table tr:hover td { transition: background .15s; }
+  td code { background: var(--surface-3); border-radius: 6px; padding: 3px 8px; font-size: 13px; color: #b9c0ff; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  td b { color: #fff; }
+
+  /* cheatsheet */
+  .cheat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr)); gap: 18px; }
+  .cheat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); transition: .2s; }
+  .cheat:hover { border-color: #3a4252; transform: translateY(-2px); }
+  .cheat h3 { font-size: 15px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .cheat ul { list-style: none; }
+  .cheat li { font-size: 13.5px; color: #c2c8d4; padding: 8px 0; border-bottom: 1px dashed var(--border); display: flex; justify-content: space-between; gap: 12px; }
+  .cheat li:last-child { border: none; }
+  .cheat li b { color: #fff; font-weight: 600; white-space: nowrap; }
+
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: linear-gradient(180deg, var(--accent), #6f7bf0); color: #fff; font-size: 14px; font-weight: 600;
+    padding: 12px 24px; border-radius: 999px; opacity: 0; pointer-events: none; transition: .28s cubic-bezier(.2,.7,.3,1); z-index: 100;
+    box-shadow: 0 12px 30px -8px rgba(129,140,248,.6);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .note { font-size: 12.5px; color: var(--text-dim); margin-top: 12px; line-height: 1.6; }
+  .note code { color: #b9c0ff; background: var(--surface-3); border-radius: 5px; padding: 1px 6px; font-family: ui-monospace, Menlo, monospace; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== 무드보드 ===== */
+  .mb-toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+  .mb-btn {
+    font-family: var(--ui-font); font-size: 13px; font-weight: 600; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 9px 14px; cursor: pointer; transition: .15s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .mb-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .mb-btn.primary { background: linear-gradient(180deg, rgba(129,140,248,.28), rgba(129,140,248,.14)); border-color: var(--accent); }
+  .mb-btn.ghost { color: var(--text-dim); background: transparent; }
+  .mb-btn.ghost:hover { color: #ff8b8b; border-color: #ff8b8b; }
+  .mb-spacer { flex: 1; }
+  .mb-board {
+    columns: 4 220px; column-gap: 16px; min-height: 320px;
+  }
+  .mb-empty {
+    border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 70px 20px;
+    text-align: center; color: var(--text-dim); font-size: 14px; line-height: 1.7;
+  }
+  .mb-empty b { color: var(--text); }
+  .mb-item {
+    break-inside: avoid; margin-bottom: 16px; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow);
+    position: relative; transition: .18s;
+  }
+  .mb-item:hover { border-color: #3a4252; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .mb-item .del {
+    position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(0,0,0,.55); color: #fff; border: none; cursor: pointer; font-size: 13px;
+    display: flex; align-items: center; justify-content: center; opacity: 0; transition: .15s; backdrop-filter: blur(4px); z-index: 2;
+  }
+  .mb-item:hover .del { opacity: 1; }
+  .mb-item .del:hover { background: #e5484d; }
+  .mb-item img { width: 100%; display: block; }
+  .mb-color { height: 120px; position: relative; cursor: pointer; }
+  .mb-color .hex { position: absolute; bottom: 10px; left: 12px; font-size: 12px; font-weight: 700; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); letter-spacing: .02em; }
+  .mb-font { padding: 20px; }
+  .mb-font .fbig { font-size: 30px; letter-spacing: -.02em; line-height: 1.25; color: #fff; word-break: keep-all; }
+  .mb-font .fname { font-size: 11.5px; color: var(--text-dim); margin-top: 10px; font-family: var(--ui-font); }
+  .mb-text { padding: 20px; font-size: 17px; line-height: 1.6; color: var(--text); white-space: pre-wrap; word-break: break-word; }
+  .mb-text.note-tile { color: var(--text-dim); font-size: 14px; }
+
+  /* 모달 */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .modal-bg.show { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 440px; box-shadow: var(--shadow-lg); }
+  .modal h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+  .modal label { font-size: 12px; color: var(--text-dim); display: block; margin: 12px 0 6px; }
+  .modal input, .modal textarea, .modal select {
+    width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 11px 14px; color: var(--text); font-family: var(--ui-font); font-size: 14px; outline: none;
+  }
+  .modal textarea { resize: vertical; min-height: 70px; }
+  .modal input:focus, .modal textarea:focus, .modal select:focus { border-color: var(--accent); }
+  .modal .row { display: flex; gap: 10px; }
+  .modal .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+  @media (max-width: 560px) { .mb-board { columns: 2 140px; } main { padding: 28px 16px 120px; } header.top { padding: 16px 16px 0; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <h1>🎨 디자인 레퍼런스</h1>
+    <p>폰트 · 색상 · 자간/행간 · 무드보드를 매번 검색하지 않도록 정리해 둔 개인 작업 도구</p>
+    <div class="searchbar">
+      <span class="ico">🔍</span>
+      <input id="search" type="text" placeholder="키워드 검색 — 예: 한글, 제목, 행간, 럭셔리, 블루, 자간…" autocomplete="off" />
+      <button id="searchClear" title="지우기">✕</button>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="fonts" class="active">폰트</button>
+      <button data-tab="pairs">폰트 조합</button>
+      <button data-tab="colors">색상</button>
+      <button data-tab="spacing">자간 · 행간</button>
+      <button data-tab="cheat">치트시트</button>
+      <button data-tab="moodboard">무드보드</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ================= 검색 결과 ================= -->
+  <section class="panel" id="searchPanel">
+    <p class="lead" id="searchSummary"></p>
+    <div id="searchResults"></div>
+  </section>
+
+  <!-- ================= 폰트 ================= -->
+  <section class="panel active" id="fonts">
+    <p class="lead">실제 폰트로 렌더링됩니다. 아래에 직접 문구를 넣어 모든 폰트로 비교해 보세요.</p>
+    <div class="preview-input">
+      <span class="ico">✍️</span>
+      <input id="previewText" type="text" placeholder="여기에 문구 입력 → 모든 폰트로 미리보기 (예: 우리 브랜드 이름, Hello 123)" autocomplete="off" />
+      <button id="previewClear">기본 샘플로</button>
+    </div>
+    <div class="filters" id="fontFilters">
+      <button class="chip active" data-f="all">전체</button>
+      <button class="chip" data-f="ko">한글</button>
+      <button class="chip" data-f="en">영문</button>
+      <button class="chip" data-f="ui">UI</button>
+      <button class="chip" data-f="brand">브랜딩</button>
+    </div>
+    <div class="grid" id="fontGrid"></div>
+  </section>
+
+  <!-- ================= 폰트 조합 ================= -->
+  <section class="panel" id="pairs">
+    <p class="lead">제목 + 본문으로 검증된 조합. 실시간 미리보기.</p>
+    <div id="pairList"></div>
+  </section>
+
+  <!-- ================= 색상 ================= -->
+  <section class="panel" id="colors">
+    <h2 class="section-title">배색 규칙</h2>
+    <table>
+      <tr><th>규칙</th><th>내용</th></tr>
+      <tr><td><b>60-30-10</b></td><td>주색 60%(배경·여백) · 보조 30% · 강조 10%(CTA·포인트). 비율만 지켜도 안정적.</td></tr>
+      <tr><td><b>뉴트럴 먼저</b></td><td>회색 스케일(배경/테두리/텍스트)을 먼저 정하고, 그 위에 컬러 1~2개만 얹기.</td></tr>
+      <tr><td><b>채도 톤 맞추기</b></td><td>한 팔레트 안에서 채도(saturation)를 비슷하게. 쨍한 색 + 탁한 색 섞으면 촌스러움.</td></tr>
+      <tr><td><b>명도 대비</b></td><td>본문 텍스트/배경 대비 <code>4.5:1</code> 이상 (WCAG AA). 큰 텍스트는 <code>3:1</code>.</td></tr>
+      <tr><td><b>강조색은 하나</b></td><td>액션을 유도하는 색은 화면당 1개. 여러 개면 위계가 무너짐.</td></tr>
+    </table>
+    <h2 class="section-title">검증된 팔레트 <span style="font-weight:400;color:var(--text-dim);font-size:13px">— 색상 클릭 시 복사</span></h2>
+    <div id="paletteList"></div>
+    <p class="note">더 필요하면: <a href="https://coolors.co" target="_blank">Coolors</a> · <a href="https://www.realtimecolors.com" target="_blank">Realtime Colors</a> · <a href="https://uicolors.app" target="_blank">UIColors</a>(Tailwind 스케일 생성) · <a href="https://www.happyhues.co" target="_blank">Happy Hues</a></p>
+  </section>
+
+  <!-- ================= 자간 행간 ================= -->
+  <section class="panel" id="spacing">
+    <h2 class="section-title">실전 규칙 · 웹 vs 모바일</h2>
+    <table>
+      <tr><th>항목</th><th>웹</th><th>모바일</th></tr>
+      <tr><td><b>섹션 간격</b></td><td><code>120 ~ 200px</code></td><td><code>60 ~ 80px</code></td></tr>
+      <tr><td><b>본문 최소 크기</b></td><td><code>16px</code> · 더 작게는 14까지</td><td><code>16px</code> · 작게는 14, <b>10~20대 타겟이면 12도 가능</b></td></tr>
+      <tr><td><b>계층(용도)</b></td><td colspan="2">제목·본문·캡션의 크기 위계를 명확히 구분 (아래 표 참고)</td></tr>
+    </table>
+
+    <h2 class="section-title">글자 크기 → 행간 빠른 표</h2>
+    <table>
+      <tr><th>글자 크기</th><th>행간 (line-height)</th><th></th></tr>
+      <tr><td>0 ~ 20pt <span style="color:var(--text-dim)">(본문·작은 글자)</span></td><td><code>약 140%</code></td><td style="color:var(--text-dim)">넉넉하게</td></tr>
+      <tr><td>20 ~ 30pt</td><td><code>130%</code></td><td></td></tr>
+      <tr><td>30 ~ 40pt</td><td><code>120%</code></td><td></td></tr>
+      <tr><td>40 ~ 50pt <span style="color:var(--text-dim)">(큰 제목)</span></td><td><code>110%</code></td><td style="color:var(--text-dim)">타이트하게</td></tr>
+    </table>
+    <p class="note">규칙: <b>글자가 커질수록 행간 %는 내린다.</b> 작은 본문은 넉넉히(140%), 큰 제목은 타이트하게(110%). 화면에선 pt ≈ px로 봐도 무방.</p>
+
+    <h2 class="section-title">행간 (line-height) — 상황별</h2>
+    <table>
+      <tr><th>상황</th><th>line-height</th><th>메모</th></tr>
+      <tr><td><b>큰 제목 / 헤드라인</b></td><td><code>1.1 ~ 1.25</code></td><td>클수록 좁게. 너무 벌어지면 한 덩어리로 안 읽힘.</td></tr>
+      <tr><td><b>소제목</b></td><td><code>1.3 ~ 1.4</code></td><td>제목과 본문의 중간.</td></tr>
+      <tr><td><b>본문 (영문)</b></td><td><code>1.5 ~ 1.6</code></td><td>가독성 기본값. <code>1.5</code>가 안전.</td></tr>
+      <tr><td><b>본문 (한글)</b></td><td><code>1.6 ~ 1.8</code></td><td>한글은 글자가 빽빽해 영문보다 살짝 넓게.</td></tr>
+      <tr><td><b>캡션 / 작은 글씨</b></td><td><code>1.4 ~ 1.5</code></td><td>짧으니 좁아도 됨.</td></tr>
+      <tr><td><b>버튼 / 라벨</b></td><td><code>1.0 ~ 1.2</code></td><td>한 줄이라 수직 중앙만 맞으면 됨.</td></tr>
+    </table>
+
+    <h2 class="section-title">자간 (letter-spacing) — 상황별</h2>
+    <table>
+      <tr><th>상황</th><th>letter-spacing</th><th>메모</th></tr>
+      <tr><td><b>큰 제목 (한글)</b></td><td><code>-0.02em ~ -0.04em</code></td><td>한글 큰 글씨는 음수 자간이 거의 필수. 안 주면 헐렁해 보임.</td></tr>
+      <tr><td><b>큰 제목 (영문)</b></td><td><code>-0.01em ~ -0.03em</code></td><td>디스플레이 폰트일수록 좁히기.</td></tr>
+      <tr><td><b>본문</b></td><td><code>0 ~ -0.01em</code></td><td>거의 건드리지 않음. 폰트 기본값 신뢰.</td></tr>
+      <tr><td><b>대문자 영문 (라벨)</b></td><td><code>+0.05em ~ +0.1em</code></td><td>ALL CAPS는 자간을 벌려야 답답하지 않음.</td></tr>
+      <tr><td><b>작은 글씨 / 캡션</b></td><td><code>0 ~ +0.01em</code></td><td>작을수록 살짝 벌리면 또렷.</td></tr>
+    </table>
+    <p class="note">핵심 직관: <b>글자가 커질수록 자간은 좁게(음수), 행간도 좁게.</b> 작아질수록 반대. 한글은 영문보다 행간 +0.1, 큰 제목 자간 음수를 더 강하게.</p>
+    <p class="note"><b>폰트·언어에 따라 다름:</b> 영문 디스플레이/제목은 자간을 <code>살짝 넓혀(+)</code> 시원하고 모던하게 가기도 합니다(특히 ALL CAPS·기하학 산세리프). 한글 큰 제목은 반대로 음수가 자연스러워요. <b>본문</b>은 자간 <code>0 ~ 5%</code> 기본/좁게, <b>행간 130% ~ 150%</b>(=1.3~1.5)로 가독성 확보가 안전한 기본값입니다.</p>
+
+    <h2 class="section-title">크기 위계 (8px 스케일 기준)</h2>
+    <table>
+      <tr><th>역할</th><th>크기</th><th>weight</th></tr>
+      <tr><td>Display</td><td><code>48–64px</code></td><td>700–800</td></tr>
+      <tr><td>H1</td><td><code>32–40px</code></td><td>700</td></tr>
+      <tr><td>H2</td><td><code>24–28px</code></td><td>600–700</td></tr>
+      <tr><td>H3</td><td><code>20px</code></td><td>600</td></tr>
+      <tr><td>본문</td><td><code>16px</code></td><td>400</td></tr>
+      <tr><td>보조 텍스트</td><td><code>14px</code></td><td>400</td></tr>
+      <tr><td>캡션</td><td><code>12–13px</code></td><td>400–500</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= 치트시트 ================= -->
+  <section class="panel" id="cheat">
+    <p class="lead">막힐 때 30초 안에 결정하는 빠른 표.</p>
+    <div class="cheat-grid">
+      <div class="cheat">
+        <h3>🅰️ 폰트 빠른 선택</h3>
+        <ul>
+          <li>한글 UI <b>Pretendard</b></li>
+          <li>한글 본문 <b>Noto Sans KR</b></li>
+          <li>한글 임팩트 제목 <b>Gmarket / Black Han Sans</b></li>
+          <li>영문 UI <b>Inter</b></li>
+          <li>영문 모던 제목 <b>Montserrat / Space Grotesk</b></li>
+          <li>고급/감성 세리프 <b>Playfair · Lora</b></li>
+        </ul>
+      </div>
+      <div class="cheat">
+        <h3>📏 자간 / 행간</h3>
+        <ul>
+          <li>큰 제목 자간 <b>-0.02 ~ -0.04em</b></li>
+          <li>본문 자간 <b>0</b></li>
+          <li>제목 행간 <b>1.1 ~ 1.3</b></li>
+          <li>본문 행간(영) <b>1.5 ~ 1.6</b></li>
+          <li>본문 행간(한) <b>1.6 ~ 1.8</b></li>
+          <li>ALL CAPS <b>+0.08em</b></li>
+        </ul>
+      </div>
+      <div class="cheat">
+        <h3>🎨 색상</h3>
+        <ul>
+          <li>비율 <b>60 / 30 / 10</b></li>
+          <li>강조색 <b>화면당 1개</b></li>
+          <li>본문 대비 <b>4.5:1 ↑</b></li>
+          <li>뉴트럴 <b>먼저 정하기</b></li>
+          <li>채도 <b>톤 통일</b></li>
+        </ul>
+      </div>
+      <div class="cheat">
+        <h3>🧱 레이아웃</h3>
+        <ul>
+          <li>간격 단위 <b>8px 배수</b></li>
+          <li>섹션 간격(웹) <b>120–200</b></li>
+          <li>섹션 간격(모바일) <b>60–80</b></li>
+          <li>본문 최소 <b>16 (작게 14)</b></li>
+          <li>본문 한 줄 <b>45–75자</b></li>
+          <li>폰트 종류 <b>2개 이하</b></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">이 파일은 단일 HTML이라 더블클릭으로 바로 열리고, 그대로 Vercel/GitHub Pages에 올리면 어디서든 접속 가능한 웹앱이 됩니다. 항목 추가는 <code>index.html</code> 상단 스크립트의 <code>FONTS</code> / <code>PAIRS</code> / <code>PALETTES</code> 배열만 수정하면 끝.</p>
+  </section>
+
+  <!-- ================= 무드보드 ================= -->
+  <section class="panel" id="moodboard">
+    <p class="lead">색상 · 폰트 · 이미지 · 텍스트를 모아 작업 무드를 잡아보세요. <b style="color:var(--text)">브라우저에 자동 저장</b>되어 새로고침해도 유지됩니다. 이미지는 보드 영역에 <b style="color:var(--text)">드래그&드롭</b>도 돼요.</p>
+    <div class="mb-toolbar">
+      <button class="mb-btn primary" data-add="color">＋ 색상</button>
+      <button class="mb-btn" data-add="font">＋ 폰트</button>
+      <button class="mb-btn" data-add="image">＋ 이미지</button>
+      <button class="mb-btn" data-add="text">＋ 텍스트</button>
+      <div class="mb-spacer"></div>
+      <button class="mb-btn ghost" id="mbClear">전체 비우기</button>
+    </div>
+    <div class="mb-board" id="mbBoard"></div>
+  </section>
+</main>
+
+<!-- 무드보드 입력 모달 -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   데이터 — 여기만 고치면 항목이 늘어납니다.
+   ========================================================= */
+
+// font: CSS font-family / sample: 미리보기 문구 / cat: 필터 태그
+const FONTS = [
+  // ===== 한글 · 고딕(산세리프) =====
+  { name: "Pretendard", font: "Pretendard", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui"], use: "본고딕을 Apple SD 산돌고딕 Neo 구조로 리디자인한 갓-벽 국문 표준. 한·영·숫자 비율이 안정적이라 다국어에서 별도 조정이 거의 필요 없음. <b>거의 모든 웹/앱 본문·UI 1순위</b>." },
+  { name: "SUIT", font: "SUIT", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui"], use: "미니멀하고 단정한 '트렌디한 기본기'. 영문·숫자까지 예쁜 최애 고딕. <b>서비스 UI, 토스풍 인터페이스</b>." },
+  { name: "Spoqa Han Sans Neo", font: "'Spoqa Han Sans Neo'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui"], use: "깔끔한데 귀엽고, 디지털 화면에서 예쁘게 나오는 효자 폰트. <b>UI 본문, 디지털 화면</b>." },
+  { name: "Wanted Sans", font: "'Wanted Sans'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui"], use: "SUIT와 함께 영문·숫자까지 균형 좋은 요즘 감성. <b>정보성 디자인, UI</b>." },
+  { name: "나눔스퀘어 네오", font: "'NanumSquareNeo'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui","brand"], use: "직선의 미학 + 친근한 미감 + 안정적 비율. 가변 폰트 지원. <b>제목·본문 두루</b>." },
+  { name: "Noto Sans KR", font: "'Noto Sans KR'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui"], use: "구글 본고딕. 어디서나 안정적. <b>장문 본문, 호환성 중요할 때</b>." },
+  { name: "프리젠테이션 (Freesentation)", font: "'Freesentation'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui","brand"], use: "본고딕+Heebo 기반 PPT 특화. 단단하고 안정감 있는 인상의 신흥 강자. <b>발표자료, 정보성 UI</b>." },
+  { name: "IBM Plex Sans KR", font: "'IBM Plex Sans KR'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui","brand"], use: "외부는 둥근 곡선·내부는 직각의 그로테스크 스타일. 독특한 디테일로 시선을 끔. <b>제목용으로 특히 추천, 테크·정보성</b>." },
+  { name: "KoPub돋움", font: "'KoPubWorld Dotum'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui","brand"], use: "눈에 힘 안 주고 읽히는 안정감. 잡지 같은 인상. <b>장문 본문, 에디토리얼</b>." },
+  { name: "Gothic A1", font: "'Gothic A1'", sample: "다람쥐 헌 쳇바퀴", cat: ["ko","ui","brand"], use: "weight 폭이 넓어 제목·본문 모두. <b>다목적</b>." },
+  // ===== 한글 · 제목/브랜딩 =====
+  { name: "G마켓 산스", font: "'GmarketSans'", sample: "주목 G마켓", cat: ["ko","brand","ui"], use: "고딕인데도 딱딱하지 않아 제목·본문 모두 잘 어울려 활용도가 높음. <b>제목, 배너, 본문</b>." },
+  { name: "에스코어드림 (S-Core Dream)", font: "'SCoreDream'", sample: "길쭉한 네모꼴", cat: ["ko","brand"], use: "세로로 길쭉한 네모꼴 형태가 특징. 다양한 굵기. <b>제목용</b>." },
+  { name: "Black Han Sans", font: "'Black Han Sans'", sample: "주목하세요", cat: ["ko","brand"], use: "초굵은 임팩트. <b>배너, 프로모션 헤드라인, 포스터</b>." },
+  { name: "Do Hyeon", font: "'Do Hyeon'", sample: "강한 한 줄", cat: ["ko","brand"], use: "둥글고 굵은 제목용. <b>캐주얼 브랜딩, 이벤트</b>." },
+  { name: "Jua", font: "'Jua'", sample: "귀여운 느낌", cat: ["ko","brand"], use: "동글동글 손글씨풍. <b>키즈, 친근한 브랜드</b>." },
+  { name: "Gowun Dodum", font: "'Gowun Dodum'", sample: "잔잔한 문장", cat: ["ko","brand"], use: "얇고 단정한 감성. <b>에디토리얼, 무드 있는 본문</b>." },
+  // ===== 한글 · 명조(세리프) =====
+  { name: "Noto Serif KR", font: "'Noto Serif KR'", sample: "고요한 문장", cat: ["ko","brand"], use: "한글 명조(본명조). <b>고급스러운 브랜딩, 출판물</b>." },
+  { name: "Nanum Myeongjo", font: "'Nanum Myeongjo'", sample: "감성적인 글", cat: ["ko","brand"], use: "전통적 명조. <b>문학적·감성 콘텐츠</b>." },
+  // ===== 영문 · 고딕(산세리프) =====
+  { name: "Inter", font: "'Inter'", sample: "The quick brown fox", cat: ["en","ui"], use: "영문 UI 표준. 중립적이고 또렷. <b>대시보드, SaaS, 본문</b>." },
+  { name: "Roboto", font: "'Roboto'", sample: "The quick brown fox", cat: ["en","ui"], use: "안드로이드/머티리얼 기본. <b>앱 UI, 범용</b>." },
+  { name: "Open Sans", font: "'Open Sans'", sample: "The quick brown fox", cat: ["en","ui"], use: "중립적이면서 친근, 가독성 최고. <b>인쇄·웹·모바일 범용</b>. 나눔바른고딕과 조합 추천." },
+  { name: "Lato", font: "'Lato'", sample: "Numbers 1234567", cat: ["en","ui"], use: "깔끔한 고딕. 특히 둥근 숫자가 세련됨. <b>숫자 많은 사이트</b>. 본고딕·Gothic A1과 조합." },
+  { name: "Work Sans", font: "'Work Sans'", sample: "The quick brown fox", cat: ["en","ui","brand"], use: "약간의 개성 있는 산세리프. <b>스타트업 랜딩</b>." },
+  { name: "DM Sans", font: "'DM Sans'", sample: "The quick brown fox", cat: ["en","ui"], use: "기하학적·깔끔. <b>모던 UI, 핀테크</b>." },
+  { name: "Montserrat", font: "'Montserrat'", sample: "MODERN BRAND", cat: ["en","brand"], use: "살짝 눌린 비율의 기하학 산세리프, 부드러운 라운딩. 나눔고딕 느낌. <b>로고, 헤드라인, 패션</b>. 본고딕과 조합 추천." },
+  { name: "Poppins", font: "'Poppins'", sample: "Friendly Geometric", cat: ["en","brand","ui"], use: "원 형태 기반의 둥근 기하학, 순수하고 사랑스러움. <b>친근한 브랜딩, 마케팅</b>. 나눔고딕과 조합." },
+  { name: "Space Grotesk", font: "'Space Grotesk'", sample: "Tech Forward", cat: ["en","brand"], use: "테크·미래적 인상. <b>테크 스타트업, 웹3</b>." },
+  // ===== 영문 · 세리프 =====
+  { name: "Noto Serif", font: "'Noto Serif'", sample: "Versatile serif", cat: ["en","ui","brand"], use: "Noto Sans의 세리프 형제. 범용성·가독성 좋은 가성비. <b>제목·본문 모두</b>." },
+  { name: "Lora", font: "'Lora'", sample: "Readable serif body", cat: ["en","brand"], use: "읽기 좋은 세리프 본문. <b>블로그, 에디토리얼 본문</b>." },
+  { name: "Libre Baskerville", font: "'Libre Baskerville'", sample: "Classic Baskerville", cat: ["en","brand"], use: "세리프의 정석. 폭이 좁고 날렵해 속도감. 클래식하면서 포인트 문구에 좋음. <b>제목, 포인트 텍스트</b>." },
+  { name: "Playfair Display", font: "'Playfair Display'", sample: "Elegant Title", cat: ["en","brand"], use: "고대비 세리프, 우아하고 전통적. <b>웨딩·주얼리·명품 헤드라인</b>. 노토 세리프와 조합." },
+  // ===== 영문 · 디스플레이(다운로드형, 실시간 미리보기 없음) =====
+  { name: "Nevrada", font: "'Libre Baskerville'", sample: "CHIC & LUXE", cat: ["en","brand"], np: true, dl: "https://www.behance.net/gallery/87400899/FREE-Nevrada-Chic-Luxe-Serif", use: "샤프한 세리프의 시크·럭셔리 디스플레이. 획 굵기 대비로 고급·클래식. <b>로고, 클래식 헤드라인, 패션</b>." },
+  { name: "Cobaissi", font: "'Libre Baskerville'", sample: "Elegant Modern", cat: ["en","brand"], np: true, dl: "https://www.behance.net/gallery/88493093/Cobaissi-Serif-Typeface", use: "낚싯바늘처럼 날카로우면서 곡선으로 우아함. 과하지 않은 꾸밈. <b>제목, 브랜딩 제안</b>." },
+  { name: "Quik", font: "'Libre Baskerville'", sample: "BOLD IMPACT", cat: ["en","brand"], np: true, dl: "https://www.behance.net/gallery/88262241/Quik-Serif-Typeface", use: "획 두께 대비가 강해 넓은 면적으로 시선을 확 끎. 주로 대문자 사용. <b>그래픽 헤드라인, BI</b>." },
+  { name: "Lovelace", font: "'Libre Baskerville'", sample: "Vintage Style", cat: ["en","brand"], np: true, dl: "https://www.behance.net/gallery/81787591/Lovelace-Typeface-Family-with-two-completely-free-fonts", use: "가장 올드하고 고풍적인 빅토리안 세리프. 장미 가시 같은 강한 인상. <b>고풍·클래식 콘셉트</b>." },
+];
+
+// 폰트 조합: head/body 각각 family + 설명
+const PAIRS = [
+  { tag:"한글·UI", note:"가장 안전한 한글 조합", h:"Pretendard 700", hf:"Pretendard", hw:700, b:"Pretendard 400", bf:"Pretendard", bw:400,
+    ph:"가장 안전한 한글 UI 조합", pb:"제목과 본문을 같은 패밀리의 굵기 차이로만 구성하면 통일감이 강하고 실패가 없습니다. 망설여질 때 이걸로 시작하세요." },
+  { tag:"한글·브랜딩", note:"임팩트 제목 + 단정 본문", h:"Black Han Sans", hf:"'Black Han Sans'", hw:400, b:"Noto Sans KR 400", bf:"'Noto Sans KR'", bw:400,
+    ph:"주목하세요, 강한 헤드라인", pb:"굵고 강한 제목으로 시선을 잡고, 본문은 차분한 고딕으로 받쳐 균형을 만듭니다. 프로모션·랜딩 페이지에 잘 맞습니다." },
+  { tag:"한글·감성", note:"명조 제목 + 고딕 본문", h:"Noto Serif KR 600", hf:"'Noto Serif KR'", hw:600, b:"Pretendard 400", bf:"Pretendard", bw:400,
+    ph:"고요하고 단정한 인상", pb:"세리프(명조) 제목은 고급스럽고 정제된 느낌을 줍니다. 본문은 읽기 편한 고딕으로 두어 가독성을 지킵니다. 브랜드 스토리·소개 페이지에 적합." },
+  { tag:"영문·UI", note:"올라운더", h:"Inter 700", hf:"'Inter'", hw:700, b:"Inter 400", bf:"'Inter'", bw:400,
+    ph:"The cleanest UI default", pb:"Inter one-family system. Pair weights, not typefaces. Works for 90% of product interfaces — dashboards, settings, docs." },
+  { tag:"영문·럭셔리", note:"세리프 제목 + 산세리프 본문", h:"Playfair Display 700", hf:"'Playfair Display'", hw:700, b:"Inter 400", bf:"'Inter'", bw:400,
+    ph:"Elegant & Editorial", pb:"A high-contrast serif headline feels premium and editorial, while a neutral sans keeps the body modern and legible. Great for fashion, beauty, and luxury brands." },
+  { tag:"영문·테크", note:"기하학 제목 + 중립 본문", h:"Space Grotesk 600", hf:"'Space Grotesk'", hw:600, b:"DM Sans 400", bf:"'DM Sans'", bw:400,
+    ph:"Tech-forward & Modern", pb:"A geometric, slightly quirky heading paired with a clean neutral body reads as forward-thinking. Ideal for startups, developer tools, and web3 products." },
+];
+
+// 팔레트: 색 배열 + 이름/설명
+const PALETTES = [
+  { name:"뉴트럴 + 블루 (SaaS 기본)", desc:"가장 무난한 제품 UI 배색", colors:["#0F172A","#334155","#64748B","#E2E8F0","#3B82F6"] },
+  { name:"웜 미니멀", desc:"따뜻한 베이지 톤, 브랜딩에 부드러움", colors:["#1C1917","#78716C","#D6D3D1","#F5F5F4","#EA580C"] },
+  { name:"모던 다크", desc:"다크 UI, 보라 강조", colors:["#0B0B0F","#1A1A24","#2D2D3A","#A78BFA","#22D3EE"] },
+  { name:"프레시 그린", desc:"건강·자연·핀테크 신뢰감", colors:["#052E16","#166534","#22C55E","#DCFCE7","#FACC15"] },
+  { name:"파스텔 소프트", desc:"친근·키즈·라이프스타일", colors:["#475569","#FB7185","#FBBF24","#34D399","#FDF2F8"] },
+  { name:"럭셔리 모노", desc:"흑백 + 골드, 고급 브랜딩", colors:["#000000","#1A1A1A","#404040","#D4AF37","#FAFAFA"] },
+];
+
+/* =========================================================
+   렌더링
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const toast = (msg) => { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),1400); };
+
+// 탭
+document.querySelectorAll("#tabs button").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll("#tabs button").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active");
+    $("#"+btn.dataset.tab).classList.add("active");
+    window.scrollTo({top:0});
+  };
+});
+
+// 사용자가 입력한 미리보기 문구 (비어있으면 기본 샘플 사용)
+let CUSTOM = "";
+
+// 폰트 카드 HTML (그리드 + 검색결과 공용)
+function fontCardHTML(f, q) {
+  q = q || "";
+  const tagLabels = f.cat.map(c => ({ko:"한글",en:"영문",ui:"UI",brand:"브랜딩"}[c])).join(" · ");
+  const big = CUSTOM || f.sample;
+  const small = CUSTOM || ("AaBb 12345 " + (f.cat.includes('ko') ? '안녕하세요' : 'Hello'));
+  const npBadge = f.np ? `<span class="tag np">⬇ 다운로드형</span>` : "";
+  const dlLink = f.dl ? ` <a href="${f.dl}" target="_blank" rel="noopener">폰트 받기 ↗</a>` : "";
+  const npNote = f.np ? `<div class="npnote">공개 웹폰트 없음 — 미리보기는 유사 세리프로 대체됩니다</div>` : "";
+  return `<div class="card${f.np?' isnp':''}">
+    <div class="name">${q?mark(f.name,q):f.name}<span class="tags">${npBadge}<span class="tag">${tagLabels}</span></span></div>
+    <div class="preview" style="font-family:${f.font}">
+      <div class="big">${big}</div>
+      <div class="small" style="font-family:${f.font}">${small}</div>
+    </div>${npNote}
+    <div class="use">${q?mark(f.use,q):f.use}${dlLink}</div>
+  </div>`;
+}
+
+// 폰트 그리드
+function renderFonts(filter="all") {
+  $("#fontGrid").innerHTML = FONTS.filter(f => filter==="all" || f.cat.includes(filter)).map(f=>fontCardHTML(f)).join("");
+}
+document.querySelectorAll("#fontFilters .chip").forEach(c => {
+  c.onclick = () => {
+    document.querySelectorAll("#fontFilters .chip").forEach(x=>x.classList.remove("active"));
+    c.classList.add("active");
+    renderFonts(c.dataset.f);
+  };
+});
+
+// 폰트 조합
+function renderPairs() {
+  const list = $("#pairList");
+  list.innerHTML = "";
+  PAIRS.forEach(p => {
+    const el = document.createElement("div");
+    el.className = "pair";
+    el.innerHTML = `
+      <div class="meta">
+        <span><b>${p.tag}</b></span>
+        <span>제목 · ${p.h}</span>
+        <span>본문 · ${p.b}</span>
+        <span style="color:var(--text-dim)">${p.note}</span>
+      </div>
+      <div class="ph" style="font-family:${p.hf};font-weight:${p.hw}">${CUSTOM || p.ph}</div>
+      <div class="pb" style="font-family:${p.bf};font-weight:${p.bw}">${p.pb}</div>`;
+    list.appendChild(el);
+  });
+}
+
+// 팔레트
+function renderPalettes() {
+  const list = $("#paletteList");
+  list.innerHTML = "";
+  PALETTES.forEach(p => {
+    const sw = p.colors.map(c => `<div class="sw" style="background:${c}" data-hex="${c}"><span>${c}</span></div>`).join("");
+    const el = document.createElement("div");
+    el.className = "palette";
+    el.innerHTML = `<div class="swatches">${sw}</div><div class="info"><div class="name">${p.name}</div><div class="desc">${p.desc}</div></div>`;
+    list.appendChild(el);
+  });
+  document.querySelectorAll(".sw").forEach(s => {
+    s.onclick = () => { navigator.clipboard?.writeText(s.dataset.hex); toast("복사됨 · " + s.dataset.hex); };
+  });
+}
+
+renderFonts();
+renderPairs();
+renderPalettes();
+
+/* =========================================================
+   통합 검색
+   ========================================================= */
+// 자간/행간/규칙 팁을 검색 가능한 항목으로 색인
+const TIPS = [
+  { t:"큰 제목 행간", v:"line-height 1.1 ~ 1.25 — 클수록 좁게", kw:"행간 제목 헤드라인 line-height" },
+  { t:"본문 행간 (영문)", v:"line-height 1.5 ~ 1.6", kw:"행간 본문 영문 line-height 가독성" },
+  { t:"본문 행간 (한글)", v:"line-height 1.6 ~ 1.8 — 영문보다 넓게", kw:"행간 본문 한글 line-height 가독성" },
+  { t:"캡션 행간", v:"line-height 1.4 ~ 1.5", kw:"행간 캡션 작은글씨" },
+  { t:"큰 제목 자간 (한글)", v:"letter-spacing -0.02em ~ -0.04em", kw:"자간 제목 한글 letter-spacing 음수" },
+  { t:"큰 제목 자간 (영문)", v:"letter-spacing -0.01em ~ -0.03em", kw:"자간 제목 영문 letter-spacing" },
+  { t:"본문 자간", v:"letter-spacing 0 ~ -0.01em — 거의 건드리지 않음", kw:"자간 본문 letter-spacing" },
+  { t:"ALL CAPS 자간", v:"letter-spacing +0.05em ~ +0.1em — 벌려야 답답하지 않음", kw:"자간 대문자 caps 라벨 letter-spacing" },
+  { t:"명도 대비 (가독성)", v:"본문 4.5:1 이상, 큰 텍스트 3:1 (WCAG AA)", kw:"색상 대비 contrast 가독성 접근성 wcag" },
+  { t:"배색 비율", v:"60-30-10 — 주색60 / 보조30 / 강조10", kw:"색상 배색 비율 60 30 10 강조" },
+  { t:"강조색 규칙", v:"액션 유도 색은 화면당 1개", kw:"색상 강조 cta 포인트" },
+  { t:"크기 위계", v:"Display 48-64 · H1 32-40 · H2 24-28 · 본문 16 · 캡션 12-13", kw:"크기 위계 사이즈 폰트크기 스케일 8px" },
+  { t:"본문 한 줄 길이", v:"45–75자가 가장 읽기 좋음", kw:"본문 줄길이 가독성 레이아웃" },
+];
+
+const norm = s => (s||"").toLowerCase().replace(/\s+/g,"");
+function mark(text, q) {
+  if (!q) return text;
+  try { return text.replace(new RegExp("("+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi"), "<mark>$1</mark>"); }
+  catch { return text; }
+}
+
+const searchInput = $("#search");
+const searchBar = document.querySelector(".searchbar");
+
+function runSearch(q) {
+  const nq = norm(q);
+  const wrap = $("#searchResults");
+  const summary = $("#searchSummary");
+
+  if (!nq) {
+    searchBar.classList.remove("has-text");
+    $("#searchPanel").classList.remove("active");
+    document.querySelector('#tabs button[data-tab="fonts"]').click();
+    return;
+  }
+  searchBar.classList.add("has-text");
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+  $("#searchPanel").classList.add("active");
+
+  const fonts = FONTS.filter(f => norm(f.name+f.use+f.cat.join("")+(f.cat.includes('ko')?'한글':'영문')+(f.cat.includes('ui')?'ui':'')+(f.cat.includes('brand')?'브랜딩':'')).includes(nq));
+  const pairs = PAIRS.filter(p => norm(p.tag+p.note+p.h+p.b+p.ph+p.pb).includes(nq));
+  const pals  = PALETTES.filter(p => norm(p.name+p.desc+p.colors.join("")).includes(nq));
+  const tips  = TIPS.filter(t => norm(t.t+t.v+t.kw).includes(nq));
+
+  const total = fonts.length+pairs.length+pals.length+tips.length;
+  summary.innerHTML = `"<b style="color:var(--text)">${q}</b>" 검색 결과 · <b style="color:var(--accent)">${total}</b>건`;
+
+  let html = "";
+  if (fonts.length) {
+    html += `<div class="res-group"><h2>폰트 ${fonts.length}</h2><div class="grid">` +
+      fonts.map(f=>fontCardHTML(f,q)).join("") + `</div></div>`;
+  }
+  if (pairs.length) {
+    html += `<div class="res-group"><h2>폰트 조합 ${pairs.length}</h2>` +
+      pairs.map(p=>`<div class="pair"><div class="meta"><span><b>${mark(p.tag,q)}</b></span><span>제목 · ${p.h}</span><span>본문 · ${p.b}</span></div>
+      <div class="ph" style="font-family:${p.hf};font-weight:${p.hw}">${p.ph}</div>
+      <div class="pb" style="font-family:${p.bf};font-weight:${p.bw}">${mark(p.pb,q)}</div></div>`).join("") + `</div>`;
+  }
+  if (pals.length) {
+    html += `<div class="res-group"><h2>색상 팔레트 ${pals.length}</h2>` +
+      pals.map(p=>{
+        const sw = p.colors.map(c=>`<div class="sw" style="background:${c}" data-hex="${c}"><span>${c}</span></div>`).join("");
+        return `<div class="palette"><div class="swatches">${sw}</div><div class="info"><div class="name">${mark(p.name,q)}</div><div class="desc">${mark(p.desc,q)}</div></div></div>`;
+      }).join("") + `</div>`;
+  }
+  if (tips.length) {
+    html += `<div class="res-group"><h2>자간 · 행간 · 규칙 ${tips.length}</h2><table><tr><th>항목</th><th>값</th></tr>` +
+      tips.map(t=>`<tr><td><b>${mark(t.t,q)}</b></td><td>${mark(t.v,q)}</td></tr>`).join("") + `</table></div>`;
+  }
+  if (!total) html = `<div class="res-empty">"<b>${q}</b>"에 대한 결과가 없어요.<br>예: 한글 · 영문 · UI · 브랜딩 · 제목 · 행간 · 자간 · 블루 · 럭셔리</div>`;
+
+  wrap.innerHTML = html;
+  // 팔레트 복사 재바인딩
+  wrap.querySelectorAll(".sw").forEach(s => s.onclick = () => { navigator.clipboard?.writeText(s.dataset.hex); toast("복사됨 · "+s.dataset.hex); });
+}
+
+let _deb;
+searchInput.addEventListener("input", e => { clearTimeout(_deb); _deb = setTimeout(()=>runSearch(e.target.value.trim()), 120); });
+$("#searchClear").onclick = () => { searchInput.value=""; runSearch(""); searchInput.focus(); };
+// 탭 클릭 시 검색 비우기
+document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", ()=>{ if(searchInput.value){ searchInput.value=""; searchBar.classList.remove("has-text"); }}));
+// 단축키: / 로 검색 포커스
+document.addEventListener("keydown", e => { if(e.key==="/" && document.activeElement!==searchInput && document.activeElement!==$("#previewText")){ e.preventDefault(); searchInput.focus(); }});
+
+// 문구 미리보기 입력 → 폰트/조합/검색결과 전부 갱신
+const previewText = $("#previewText");
+function refreshAll() {
+  const active = document.querySelector("#fontFilters .chip.active")?.dataset.f || "all";
+  renderFonts(active);
+  renderPairs();
+  if (searchInput.value.trim()) runSearch(searchInput.value.trim());
+}
+previewText.addEventListener("input", e => { CUSTOM = e.target.value; refreshAll(); });
+$("#previewClear").onclick = () => { CUSTOM=""; previewText.value=""; refreshAll(); previewText.focus(); };
+
+/* =========================================================
+   무드보드 (localStorage 저장)
+   ========================================================= */
+const MB_KEY = "designref_moodboard_v1";
+let MB = [];
+try { MB = JSON.parse(localStorage.getItem(MB_KEY)) || []; } catch { MB = []; }
+function saveMB() {
+  try { localStorage.setItem(MB_KEY, JSON.stringify(MB)); }
+  catch { toast("⚠️ 저장 용량 초과 — 이미지를 줄여주세요"); }
+}
+function addMB(item) { MB.push({ id: Date.now() + "_" + Math.round(Math.random()*1e5), ...item }); saveMB(); renderMB(); }
+function delMB(id) { MB = MB.filter(i => i.id !== id); saveMB(); renderMB(); }
+
+function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function renderMB() {
+  const board = $("#mbBoard");
+  if (!MB.length) {
+    board.innerHTML = `<div class="mb-empty" style="column-span:all">아직 비어 있어요.<br>위 버튼으로 <b>색상·폰트·이미지·텍스트</b>를 추가하거나, 여기에 이미지를 <b>드래그&드롭</b> 해보세요.</div>`;
+    return;
+  }
+  board.innerHTML = MB.map(i => {
+    let inner = "";
+    if (i.type === "color") inner = `<div class="mb-color" style="background:${esc(i.hex)}" data-copy="${esc(i.hex)}"><span class="hex">${esc(i.hex)}</span></div>`;
+    else if (i.type === "font") inner = `<div class="mb-font"><div class="fbig" style="font-family:${i.font}">${esc(i.text)}</div><div class="fname">${esc(i.name)}</div></div>`;
+    else if (i.type === "image") inner = `<img src="${i.src}" alt="moodboard" loading="lazy" />`;
+    else if (i.type === "text") inner = `<div class="mb-text ${i.note?'note-tile':''}">${esc(i.text)}</div>`;
+    return `<div class="mb-item">${inner}<button class="del" data-del="${i.id}" title="삭제">✕</button></div>`;
+  }).join("");
+  board.querySelectorAll("[data-del]").forEach(b => b.onclick = () => delMB(b.dataset.del));
+  board.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => { navigator.clipboard?.writeText(b.dataset.copy); toast("복사됨 · " + b.dataset.copy); });
+}
+
+// 모달
+const modalBg = $("#modalBg"), modalBox = $("#modalBox");
+function openModal(html) { modalBox.innerHTML = html; modalBg.classList.add("show"); }
+function closeModal() { modalBg.classList.remove("show"); modalBox.innerHTML = ""; }
+modalBg.addEventListener("click", e => { if (e.target === modalBg || e.target.hasAttribute("data-close")) closeModal(); });
+
+const actionsHTML = (saveId) => `<div class="actions"><button class="mb-btn ghost" data-close>취소</button><button class="mb-btn primary" id="${saveId}">추가</button></div>`;
+
+function openAdd(type) {
+  if (type === "color") {
+    openModal(`<h3>색상 추가</h3>
+      <div class="row"><input type="color" id="cPick" value="#818cf8" style="width:64px;height:46px;padding:4px" /><input type="text" id="cHex" value="#818CF8" /></div>
+      ${actionsHTML("cSave")}`);
+    const pick=$("#cPick"), hex=$("#cHex");
+    pick.oninput = ()=> hex.value = pick.value.toUpperCase();
+    hex.oninput = ()=> { if(/^#[0-9a-fA-F]{6}$/.test(hex.value)) pick.value = hex.value; };
+    $("#cSave").onclick = ()=>{ addMB({type:"color", hex: hex.value.toUpperCase()}); closeModal(); };
+  }
+  else if (type === "font") {
+    const opts = FONTS.map(f=>`<option value="${esc(f.name)}" data-font="${esc(f.font)}" data-ko="${f.cat.includes('ko')?1:0}">${esc(f.name)}</option>`).join("");
+    openModal(`<h3>폰트 추가</h3>
+      <label>폰트</label><select id="fSel">${opts}</select>
+      <label>문구</label><input type="text" id="fText" value="가나다 ABC 123" />
+      ${actionsHTML("fSave")}`);
+    $("#fSave").onclick = ()=>{ const o=$("#fSel").selectedOptions[0]; addMB({type:"font", font:o.dataset.font, name:o.value, text:$("#fText").value||"가나다 ABC"}); closeModal(); };
+  }
+  else if (type === "image") {
+    openModal(`<h3>이미지 추가</h3>
+      <label>이미지 URL</label><input type="text" id="iUrl" placeholder="https://... 주소 붙여넣기" />
+      <label>또는 파일 선택</label><input type="file" id="iFile" accept="image/*" />
+      <p class="note">팁: 보드 영역에 파일을 드래그&드롭해도 됩니다.</p>
+      ${actionsHTML("iSave")}`);
+    $("#iFile").onchange = e => { const f=e.target.files[0]; if(f) fileToImage(f, src=>{ addMB({type:"image", src}); closeModal(); }); };
+    $("#iSave").onclick = ()=>{ const u=$("#iUrl").value.trim(); if(u){ addMB({type:"image", src:u}); closeModal(); } else toast("URL을 넣거나 파일을 선택하세요"); };
+  }
+  else if (type === "text") {
+    openModal(`<h3>텍스트 추가</h3>
+      <textarea id="tVal" placeholder="키워드, 슬로건, 메모 등"></textarea>
+      <label style="display:flex;align-items:center;gap:7px;cursor:pointer"><input type="checkbox" id="tNote" style="width:auto" /> 작은 메모 스타일로</label>
+      ${actionsHTML("tSave")}`);
+    $("#tSave").onclick = ()=>{ const v=$("#tVal").value.trim(); if(!v){ toast("내용을 입력하세요"); return; } addMB({type:"text", text:v, note:$("#tNote").checked}); closeModal(); };
+  }
+}
+document.querySelectorAll("[data-add]").forEach(b => b.onclick = () => openAdd(b.dataset.add));
+$("#mbClear").onclick = () => { if(MB.length && confirm("무드보드를 전부 비울까요?")){ MB=[]; saveMB(); renderMB(); } };
+
+// 이미지 파일 → 리사이즈된 dataURL
+function fileToImage(file, cb) {
+  const r = new FileReader();
+  r.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 900; let w = img.width, h = img.height;
+      if (w > max || h > max) { const s = max/Math.max(w,h); w = Math.round(w*s); h = Math.round(h*s); }
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      c.getContext("2d").drawImage(img, 0, 0, w, h);
+      cb(c.toDataURL("image/jpeg", 0.85));
+    };
+    img.src = e.target.result;
+  };
+  r.readAsDataURL(file);
+}
+
+// 드래그 & 드롭
+const board = $("#mbBoard");
+["dragenter","dragover"].forEach(ev => board.addEventListener(ev, e => { e.preventDefault(); board.style.outline = "2px dashed var(--accent)"; board.style.outlineOffset = "8px"; }));
+["dragleave","drop"].forEach(ev => board.addEventListener(ev, e => { e.preventDefault(); board.style.outline = "none"; }));
+board.addEventListener("drop", e => {
+  const files = [...(e.dataTransfer?.files || [])].filter(f => f.type.startsWith("image/"));
+  files.forEach(f => fileToImage(f, src => addMB({type:"image", src})));
+  const url = e.dataTransfer?.getData("text/uri-list") || e.dataTransfer?.getData("text/plain");
+  if (!files.length && url && /^https?:\/\//.test(url)) addMB({type:"image", src:url.trim()});
+});
+
+renderMB();
+</script>
+</body>
+</html>
