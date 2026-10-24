@@ -612,6 +612,44 @@ html[data-theme="light"] .reading-dock span {background:#fff;color:#4C2A94}
  .desk-footer {padding-bottom:90px}
 }
 
+
+/* Fine-grained reference picking and a detached work desk */
+.detail-pick {margin-top:14px;display:flex;justify-content:flex-end}
+td.detail-pick {display:table-cell;margin:0;white-space:nowrap;width:130px;vertical-align:middle}
+th.detail-pick {display:table-cell;margin:0;min-width:126px}
+.detail-pick .pick-button {font-size:13px;min-height:40px;padding:8px 10px}
+.weight-row {grid-template-columns:180px 1fr auto}
+.weight-row>.detail-pick {margin:0}
+.is-detail-picked {outline:1px solid var(--accent);outline-offset:-1px}
+.font-custom {margin-top:18px}
+.font-custom label {display:block;font-family:var(--ui-font);font-size:14px;color:var(--text-dim)}
+.font-custom label>span {display:block;margin-bottom:7px}
+.font-custom input {display:block;width:100%;min-width:0;min-height:46px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);padding:11px 13px;font:inherit;font-family:var(--ui-font);font-size:16px}
+.font-custom input::placeholder {font-size:13px;color:var(--text-dim)}
+.font-custom p {font-size:12px;color:var(--text-dim);margin-top:6px}
+.collection-top-actions {display:flex;gap:8px;flex-wrap:wrap}
+#floatStatus {font-size:14px;color:var(--text-dim);margin:8px 0 16px;max-width:70ch}
+#floatStatus a {font-size:13px}
+.floating-desk {padding:0!important;font-size:16px}
+.float-toolbar {position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.float-toolbar b {font-size:16px}
+.float-toolbar small {display:block;color:var(--text-dim);font-size:12px;margin-top:4px}
+.float-toolbar .collection-action {min-height:36px;font-size:12px;padding:8px}
+.float-body {padding:0 16px 32px}
+.float-body .collection-entry {padding:18px;margin:18px 0}
+.float-body .collection-entry-head h3 {font-size:20px}
+.float-body .collection-entry-head {flex-direction:column}
+.float-body .collection-content .example-grid,.float-body .color-recipes {grid-template-columns:1fr}
+.float-body .collection-entry-actions {flex-wrap:wrap}
+.float-body .guide-table {margin:14px 0}
+.float-body .weight-row {grid-template-columns:1fr;gap:10px;padding:18px}
+.float-body .weight-row p {font-size:20px}
+.float-memo {margin:16px 0;background:var(--surface);padding:16px;border:1px solid var(--border);border-radius:12px}
+.float-memo summary {cursor:pointer;font-size:15px;font-weight:700}
+.float-memo textarea {width:100%;min-height:100px;resize:vertical;display:block;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:12px;font:inherit;line-height:1.7;margin-top:12px}
+.float-body .font-custom input {font-size:16px}
+@media(max-width:760px){.weight-row{grid-template-columns:1fr}.weight-row>.detail-pick{justify-content:flex-start}.collection-top-actions{width:100%}}
+
 </style>
 </head>
 <body>
@@ -625,7 +663,7 @@ html[data-theme="light"] .reading-dock span {background:#fff;color:#4C2A94}
       <input id="search" type="text" placeholder="기준 찾기 — 예: 그림자, 굵기, 여백, 그라데이션…" autocomplete="off" />
       <button id="searchClear" title="지우기">✕</button>
     </div>
-    <div class="reading-controls"><button class="comfort-btn" id="themeToggle" type="button" aria-pressed="true">화면 · 어둡게</button><button class="comfort-btn" id="sizeToggle" type="button" aria-pressed="false">글자 크게</button><button class="comfort-btn" type="button" data-open-collection>모아보기 <span data-selection-count>0</span></button></div><p class="reading-help">필요한 항목에 <b>＋ 모아두기</b> → 모아보기에서 함께 읽고 메모하기.</p><nav class="tabs" id="tabs"><button data-tab="collection">모아보기 <span data-selection-count>0</span></button>
+    <div class="reading-controls"><button class="comfort-btn" id="themeToggle" type="button" aria-pressed="true">화면 · 어둡게</button><button class="comfort-btn" id="sizeToggle" type="button" aria-pressed="false">글자 크게</button><button class="comfort-btn" type="button" data-open-collection>모아보기 <span data-selection-count>0</span></button></div><p class="reading-help">예시·표의 한 행도 선택 가능해요. <b>모아보기 → 작업창 띄우기</b>로 작업 옆에 두세요.</p><nav class="tabs" id="tabs"><button data-tab="collection">모아보기 <span data-selection-count>0</span></button>
       <button data-tab="typeguide" class="active">글자 · 조합</button>
       <button data-tab="boxguide">여백 · 박스</button>
       <button data-tab="effectguide">그림자 · 글로우</button>
@@ -644,10 +682,10 @@ html[data-theme="light"] .reading-dock span {background:#fff;color:#4C2A94}
 <main>
 <section class="panel" id="collection" aria-labelledby="collectionTitle">
  <div class="collection-intro">
-  <div class="guide-intro"><span class="eyebrow">MY DESK / THIS SESSION</span><h2 id="collectionTitle">지금 필요한 가이드만 모아보기</h2><p>가이드의 ‘＋ 모아두기’를 누르면 선택한 순서대로 여기에 모입니다. 메모와 함께 작업 옆에 두세요.</p></div>
-  <button class="collection-action" id="clearSelection" type="button">선택 모두 해제</button>
+  <div class="guide-intro"><span class="eyebrow">MY DESK / THIS SESSION</span><h2 id="collectionTitle">지금 필요한 가이드만 모아보기</h2><p>섹션 전체 또는 개별 예시·표의 한 행을 선택하세요. 선택한 순서대로 모이고, 전체와 세부 항목을 함께 고르면 각각 표시됩니다.</p></div>
+  <div class="collection-top-actions"><button class="collection-action" id="openFloat" type="button">작업창 띄우기 ↗</button><button class="collection-action" id="openRegularFloat" type="button">일반 창으로</button><button class="collection-action" id="clearSelection" type="button">선택 모두 해제</button></div>
  </div>
- <p class="session-note">선택과 메모는 <b>이 탭에서 새로고침해도 유지</b>돼요. 탭을 닫으면 보통 초기화되며, 브라우저의 탭 복구 시에는 돌아올 수 있어요.</p>
+ <p id="floatStatus" role="status">지원 브라우저에서는 항상 위에 뜨는 PiP 작업창으로 열려요. 일반 창은 항상 위 고정을 보장하지 않아요.</p><p class="session-note">선택과 메모는 <b>이 탭에서 새로고침해도 유지</b>돼요. 탭을 닫으면 보통 초기화되며, 브라우저의 탭 복구 시에는 돌아올 수 있어요.</p>
  <div class="notebook"><label for="deskMemo">이번 작업 메모</label><p>선택한 항목이 없어도 자유롭게 적을 수 있어요.</p><textarea id="deskMemo" placeholder="예: 이번 배너는 제목 96px, 본문 48px. 그림자는 부드럽게…"></textarea><span class="memo-status" id="deskMemoStatus" role="status"></span></div>
  <div id="collectionItems"></div>
 </section>
@@ -727,7 +765,7 @@ html[data-theme="light"] .reading-dock span {background:#fff;color:#4C2A94}
 
   <!-- ================= 폰트 ================= -->
   <section class="panel" id="fonts">
-    <p class="lead">실제 폰트로 렌더링됩니다. 아래에 직접 문구를 넣어 모든 폰트로 비교해 보세요.</p>
+    <p class="lead">전체 문구로 한 번에 비교하거나, 각 카드에 다른 문구를 직접 입력하세요. 개별 입력이 우선이며 비우면 전체 문구 또는 기본 예시로 돌아갑니다.</p>
     <div class="preview-input">
       <span class="ico">✍️</span>
       <input id="previewText" type="text" placeholder="여기에 문구 입력 → 모든 폰트로 미리보기 (예: 우리 브랜드 이름, Hello 123)" autocomplete="off" />
@@ -1044,6 +1082,7 @@ document.querySelectorAll("#tabs button").forEach(btn => {
 
 // 사용자가 입력한 미리보기 문구 (비어있으면 기본 샘플 사용)
 let CUSTOM = "";
+let FONT_TEXT = {};
 
 // 폰트 카드 HTML (그리드 + 검색결과 공용)
 function fontWithFallback(font) {
@@ -1052,8 +1091,9 @@ function fontWithFallback(font) {
 function fontCardHTML(f, q) {
   q = q || "";
   const tagLabels = f.cat.map(c => ({ko:"한글",en:"영문",ui:"UI",brand:"브랜딩"}[c])).join(" · ");
-  const big = CUSTOM ? esc(CUSTOM) : f.sample;
-  const small = (CUSTOM && esc(CUSTOM)) || ("AaBb 12345 " + (f.cat.includes('ko') ? '안녕하세요' : 'Hello'));
+  const own=FONT_TEXT[f.name]||"";
+  const big = own ? esc(own) : CUSTOM ? esc(CUSTOM) : f.sample;
+  const small = (own && esc(own)) || (CUSTOM && esc(CUSTOM)) || ("AaBb 12345 " + (f.cat.includes('ko') ? '안녕하세요' : 'Hello'));
   const npBadge = f.np ? `<span class="tag np">⬇ 다운로드형</span>` : "";
   const dlLink = f.dl ? ` <a href="${f.dl}" target="_blank" rel="noopener">폰트 받기 ↗</a>` : "";
   const npNote = f.np ? `<div class="npnote">공개 웹폰트 없음 — 미리보기는 유사 세리프로 대체됩니다</div>` : "";
@@ -1064,6 +1104,7 @@ function fontCardHTML(f, q) {
       <div class="small" style="font-family:${fontWithFallback(f.font)}">${small}</div>
     </div>${npNote}
     <div class="use">${q?mark(f.use,q):f.use}${dlLink}</div>
+    <div class="font-custom"><label><span>이 폰트로 문구 입력</span><input type="text" data-font-text="${esc(f.name)}" value="${esc(own)}" placeholder="비우면 전체/기본 문구" autocomplete="off"></label></div>
   </div>`;
 }
 
@@ -1382,8 +1423,9 @@ document.querySelectorAll('.panel > table').forEach(table=>{
 /* Selected references and notes live in the current browser tab session. */
 (() => {
  const SESSION_KEY='designref_work_session_v1';
+ let floatWindow=null; let floatKind='';
  const catalog=new Map();
- let state={selected:[],snapshots:{},notes:{},memo:'',theme:'dark',large:false,active:'typeguide'};
+ let state={selected:[],snapshots:{},notes:{},memo:'',theme:'dark',large:false,active:'typeguide',fontText:{}};
  try {
   const raw=JSON.parse(sessionStorage.getItem(SESSION_KEY)||'null');
   if(raw && Array.isArray(raw.selected)) {
@@ -1392,8 +1434,10 @@ document.querySelectorAll('.panel > table').forEach(table=>{
    state.snapshots=raw.snapshots&&typeof raw.snapshots==='object'?raw.snapshots:{};
    state.notes=raw.notes&&typeof raw.notes==='object'?raw.notes:{};
    state.memo=typeof raw.memo==='string'?raw.memo:'';
+   state.fontText=raw.fontText&&typeof raw.fontText==='object'?raw.fontText:{};
   }
  } catch {}
+ FONT_TEXT=state.fontText;
  const live=document.querySelector('#sessionLive');
  const announce=msg=>{live.textContent=msg;};
  function save() {
@@ -1408,6 +1452,7 @@ document.querySelectorAll('.panel > table').forEach(table=>{
   t.setAttribute('aria-pressed',state.theme!=='light');
   s.textContent=state.large?'글자 크게 · 켜짐':'글자 크게';
   s.setAttribute('aria-pressed',!!state.large);
+  if(floatWindow&&!floatWindow.closed){floatWindow.document.documentElement.dataset.theme=state.theme;floatWindow.document.documentElement.dataset.reading=state.large?'large':'normal';}
  }
  theme();
  document.querySelector('#themeToggle').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';theme();save();});
@@ -1441,7 +1486,7 @@ document.querySelectorAll('.panel > table').forEach(table=>{
    const label=sectionTitle(heading);
    head.append(heading,pickControl(key));wrapper.append(head,...next);
    catalog.set(key,{id:key,title:label,category:panelName(panel.id),panel:panel.id,element:wrapper,
-    context:panel.querySelector('.guide-banner')?.textContent.trim() || (panel.id==='mobile'?'1080×1080px SNS 원본 기준. 권장 시작값이며 실제 휴대폰 표시 크기에서 확인하세요.':panel.id==='spacing'?'웹 UI와 CSS px 기준. 이미지 원본 px와 구분해서 참고하세요.':'')});
+    context:panel.querySelector('.guide-banner')?.textContent.trim() || panel.querySelector('.guide-intro p')?.textContent.trim() || (panel.id==='mobile'?'1080×1080px SNS 원본 기준. 권장 시작값이며 실제 휴대폰 표시 크기에서 확인하세요.':panel.id==='spacing'?'웹 UI와 CSS px 기준. 이미지 원본 px와 구분해서 참고하세요.':'')});
   });
  });
  // Cheatsheet cards also work as separate references.
@@ -1450,6 +1495,31 @@ document.querySelectorAll('.panel > table').forEach(table=>{
   const line=document.createElement('div');line.className='card-pick';line.append(pickControl(key));card.append(line);
   catalog.set(key,{id:key,title:card.querySelector('h3').textContent,category:'치트시트',panel:'cheat',element:card,context:'치트시트의 일반 시작값입니다. SNS 이미지 원본 크기는 모바일 가독성 가이드를 함께 참고하세요.'});
  });
+
+ function registerDetails(){
+  [...catalog.values()].filter(p=>!p.kind).forEach(parent=>{
+   const candidates=[
+    ...[...parent.element.querySelectorAll('.example-card,.color-recipe')].map((e,i)=>({element:e,kind:'example',index:i,title:e.querySelector('.example-caption h4')?.textContent||'예시 '+(i+1)})),
+    ...[...parent.element.querySelectorAll('.weight-row')].map((e,i)=>({element:e,kind:'weight',index:i,title:e.querySelector('b')?.textContent||'굵기 '+(i+1)})),
+    ...[...parent.element.querySelectorAll('table')].flatMap((table,ti)=>[...table.rows].filter(row=>row.querySelector('td')).map((row,ri)=>({element:row,kind:'row',index:ti+'-'+ri,title:row.cells[0]?.textContent.trim()||'표 항목'}))),
+    ...(parent.panel==='cheat'?[...parent.element.querySelectorAll('li')].map((e,i)=>({element:e,kind:'list',index:i,title:e.textContent.trim()})):[])
+   ];
+   candidates.forEach(c=>{
+    const key='detail-'+parent.id+'-'+c.kind+'-'+c.index;
+    c.element.id='pick-'+key;
+    let host=document.createElement(c.kind==='row'?'td':'div');host.className='detail-pick';host.append(pickControl(key));
+    if(c.kind==='row'){
+     const table=c.element.closest('table'),first=table.rows[0];
+     if(!first.querySelector('.detail-pick')){const th=document.createElement('th');th.className='detail-pick';th.scope='col';th.textContent='선택';first.append(th);}
+     c.element.append(host);
+    }else if(c.kind==='example'){(c.element.querySelector('.example-caption')||c.element).append(host);}
+    else c.element.append(host);
+    catalog.set(key,{id:key,title:c.title,category:parent.category,panel:parent.panel,element:c.element,kind:c.kind,
+     context:parent.title+(parent.context?' · '+parent.context:''),parent:parent.id});
+   });
+  });
+ }
+
  function registerDynamic() {
   document.querySelectorAll('#fontGrid [data-pick-key],#pairList [data-pick-key],#paletteList [data-pick-key],#searchResults [data-pick-key]').forEach(card=>{
    const key=card.dataset.pickKey;
@@ -1465,39 +1535,56 @@ document.querySelectorAll('.panel > table').forEach(table=>{
  }
  function snapshot(entry) {
   const clone=entry.element.cloneNode(true);
-  clone.querySelectorAll('.guide-item-head,.card-pick,input,textarea,select,script').forEach(e=>e.remove());
-  clone.removeAttribute('id');
+  clone.querySelectorAll('.guide-item-head,.card-pick,.detail-pick,.font-custom,input,textarea,select,script').forEach(e=>e.remove());
+  clone.removeAttribute('id');clone.classList.remove('is-detail-picked');
+  clone.querySelectorAll('.is-detail-picked').forEach(e=>e.classList.remove('is-detail-picked'));
   clone.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
   clone.querySelectorAll('[for]').forEach(e=>e.removeAttribute('for'));
-  const html=entry.element.classList.contains('guide-item')?clone.innerHTML:clone.outerHTML;
+  let html=entry.element.classList.contains('guide-item')?clone.innerHTML:clone.outerHTML;
+  if(entry.kind==='row'){
+   const header=entry.element.closest('table').querySelector('thead')?.cloneNode(true)||entry.element.closest('table').querySelector('tr')?.cloneNode(true);
+   header?.querySelectorAll('.detail-pick,[data-pick]').forEach(e=>e.remove());
+   header?.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+   html='<div class="guide-table" tabindex="0" role="region" aria-label="선택한 표 항목"><table>'+(header?.tagName==='THEAD'?header.outerHTML:'<thead>'+(header?.outerHTML||'')+'</thead>')+'<tbody>'+clone.outerHTML+'</tbody></table></div>';
+  }
+  if(entry.kind==='list')html='<ul class="picked-list">'+html+'</ul>';
   return {id:entry.id,title:entry.title,category:entry.category,panel:entry.panel,context:entry.context,html};
  }
  function sync() {
   document.querySelectorAll('[data-pick]').forEach(b=>{
    const picked=state.selected.includes(b.dataset.pick);
-   b.textContent=picked?'✓ 모아둠':'＋ 모아두기';
+   const entry=catalog.get(b.dataset.pick);
+   b.textContent=picked?'✓ 모아둠':entry?.element.classList.contains('guide-item')?'＋ 섹션 전체':entry?.kind==='row'?'＋ 이 행':entry?.kind?'＋ 이 예시':'＋ 모아두기';
    b.setAttribute('aria-pressed',picked);
    const title=catalog.get(b.dataset.pick)?.title||'항목';
    b.setAttribute('aria-label',title+(picked?' 모아보기에서 제외':' 모아보기로 선택'));
-   b.closest('.guide-item')?.classList.toggle('is-picked',picked);
+   const source=catalog.get(b.dataset.pick)?.element;
+   if(source?.classList.contains('guide-item'))source.classList.toggle('is-picked',picked);
+   else if(source)source.classList.toggle('is-detail-picked',picked);
   });
   document.querySelectorAll('[data-selection-count]').forEach(e=>e.textContent=state.selected.length);
   document.querySelectorAll('[data-open-collection]').forEach(e=>e.setAttribute('aria-label','선택한 가이드 '+state.selected.length+'개 모아보기'));
   document.querySelector('#clearSelection').disabled=state.selected.length===0;
  }
- function renderCollection() {
-  const target=document.querySelector('#collectionItems');
+ function collectionMarkup() {
   if(!state.selected.length){
-   target.innerHTML='<div class="collection-empty"><h3>아직 모아둔 가이드가 없어요.</h3><p>각 항목의 ‘＋ 모아두기’를 누르세요.<br>선택한 순서대로 예시와 메모를 함께 볼 수 있어요.</p></div>';return;
+   return '<div class="collection-empty"><h3>아직 모아둔 가이드가 없어요.</h3><p>예시 카드·표의 한 행까지 골라 모아보세요.<br>선택한 순서대로 예시와 메모를 함께 볼 수 있어요.</p></div>';
   }
-  target.innerHTML=state.selected.map((key,index)=>{
+  return state.selected.map((key,index)=>{
    const s=state.snapshots[key]||(catalog.has(key)?snapshot(catalog.get(key)):null);
    if(!s)return '';
    const memoID='item-memo-'+index;
+   const font=key.startsWith('font-')?FONTS[Number(key.slice(5))]:null;
+   const itemHTML=font?fontCardHTML(font,''):s.html;
+   const context=catalog.get(key)?.context||s.context;
    return '<article class="collection-entry"><div class="collection-entry-head"><div><span class="collection-category">'+esc(s.category)+'</span><h3>'+esc(s.title)+'</h3></div><div class="collection-entry-actions"><button class="collection-action" type="button" data-source="'+esc(key)+'">원문 보기</button><button class="collection-action" type="button" data-remove="'+esc(key)+'" aria-label="'+esc(s.title)+' 모아보기에서 제거">제거</button></div></div>'+
-    (s.context?'<p class="collection-context">'+esc(s.context)+'</p>':'')+
-    '<div class="collection-content">'+s.html+'</div><div class="item-notes"><label for="'+memoID+'">이 항목 메모</label><textarea id="'+memoID+'" data-item-note="'+esc(key)+'" placeholder="내 작업에 적용할 값이나 생각을 적어보세요.">'+esc(state.notes[key]||'')+'</textarea><span class="memo-status" role="status"></span></div></article>';
+    (context?'<p class="collection-context">'+esc(context)+'</p>':'')+
+    '<div class="collection-content">'+itemHTML+'</div><div class="item-notes"><label for="'+memoID+'">이 항목 메모</label><textarea id="'+memoID+'" data-item-note="'+esc(key)+'" placeholder="내 작업에 적용할 값이나 생각을 적어보세요.">'+esc(state.notes[key]||'')+'</textarea><span class="memo-status" role="status"></span></div></article>';
   }).join('');
+ }
+ function renderCollection() {
+  document.querySelector('#collectionItems').innerHTML=collectionMarkup();
+  renderFloating();
  }
  function toggle(key) {
   if(state.selected.includes(key)){state.selected=state.selected.filter(x=>x!==key);announce('모아보기에서 제외했어요. 이 항목의 메모는 유지됩니다.');}
@@ -1516,33 +1603,126 @@ document.querySelectorAll('.panel > table').forEach(table=>{
  document.querySelector('#clearSelection').addEventListener('click',()=>{
   state.selected=[];save();sync();renderCollection();announce('선택을 모두 해제했어요. 작성한 메모는 유지돼요.');
  });
- document.querySelector('#collectionItems').addEventListener('click',async e=>{
-  const remove=e.target.closest('[data-remove]');if(remove){toggle(remove.dataset.remove);document.querySelector('#collectionTitle').focus({preventScroll:true});return;}
+
+ function openDocuments(){
+  const docs=[document];
+  try{if(floatWindow&&!floatWindow.closed)docs.push(floatWindow.document);}catch{}
+  return docs;
+ }
+ function syncMemo(key,value,origin){
+  openDocuments().forEach(doc=>{
+   const fields=key===null?[doc.querySelector('#deskMemo'),doc.querySelector('[data-float-memo]')]:[...doc.querySelectorAll('[data-item-note]')].filter(e=>e.dataset.itemNote===key);
+   fields.filter(Boolean).forEach(field=>{if(field!==origin&&field.value!==value)field.value=value;});
+  });
+ }
+ function updateFontDisplays(name,origin){
+  const index=FONTS.findIndex(f=>f.name===name),f=FONTS[index];if(!f)return;
+  const own=state.fontText[name]||'';
+  openDocuments().forEach(doc=>{
+   doc.querySelectorAll('.card[data-pick-key="font-'+index+'"]').forEach(card=>{
+    const big=card.querySelector('.preview .big'),small=card.querySelector('.preview .small');
+    if(big)big.textContent=own||CUSTOM||f.sample;
+    if(small)small.textContent=own||CUSTOM||('AaBb 12345 '+(f.cat.includes('ko')?'안녕하세요':'Hello'));
+    const input=card.querySelector('[data-font-text]');
+    if(input&&input!==origin&&input.value!==own)input.value=own;
+   });
+  });
+ }
+ function handleFontInput(e){
+  if(!e.target.matches('[data-font-text]'))return;
+  state.fontText[e.target.dataset.fontText]=e.target.value;FONT_TEXT=state.fontText;save();
+  updateFontDisplays(e.target.dataset.fontText,e.target);
+ }
+ function handleNoteInput(e){
+  const target=e.target;
+  if(target.matches('[data-item-note]')){
+   state.notes[target.dataset.itemNote]=target.value;const ok=save();
+   syncMemo(target.dataset.itemNote,target.value,target);
+   if(target.nextElementSibling)target.nextElementSibling.textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';
+  }else if(target.id==='deskMemo'||target.matches('[data-float-memo]')){
+   state.memo=target.value;const ok=save();syncMemo(null,target.value,target);
+   if(target.nextElementSibling)target.nextElementSibling.textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';
+  }
+ }
+ async function handleCollectionClick(e){
+  const remove=e.target.closest('[data-remove]');if(remove){toggle(remove.dataset.remove);return;}
   const source=e.target.closest('[data-source]');
   if(source){
    const key=source.dataset.source,s=state.snapshots[key];if(!s)return;
    document.querySelector('#tabs [data-tab="'+s.panel+'"]')?.click();
    if(key.startsWith('font-'))document.querySelector('#fontFilters [data-f="all"]').click();
+   window.focus();
    requestAnimationFrame(()=>{
     const target=document.getElementById('pick-'+key)||catalog.get(key)?.element;
     if(target){target.scrollIntoView({behavior:'smooth',block:'start'});target.querySelector('[data-pick]')?.focus({preventScroll:true});}
    });return;
   }
   const color=e.target.closest('[data-copy-color],.sw[data-hex]');
-  if(color){const value=color.dataset.copyColor||color.dataset.hex;try{await navigator.clipboard.writeText(value);toast('복사됨 · '+value);}catch{toast('색상값 · '+value);}}
+  if(color){
+   const value=color.dataset.copyColor||color.dataset.hex;
+   try{await color.ownerDocument.defaultView.navigator.clipboard.writeText(value);toast('복사됨 · '+value);}
+   catch{toast('색상값 · '+value);}
+  }
+ }
+ function renderFloating(){
+  if(!floatWindow||floatWindow.closed)return;
+  const doc=floatWindow.document,target=doc.querySelector('#floatItems');
+  if(target)target.innerHTML=collectionMarkup();
+  const count=doc.querySelector('[data-float-count]');if(count)count.textContent=state.selected.length;
+  const memo=doc.querySelector('[data-float-memo]');if(memo&&doc.activeElement!==memo)memo.value=state.memo;
+ }
+ function setupFloating(win,kind){
+  floatWindow=win;floatKind=kind;
+  const doc=win.document;
+  doc.documentElement.lang='ko';doc.documentElement.dataset.theme=state.theme;
+  doc.documentElement.dataset.reading=state.large?'large':'normal';
+  doc.title='Design Desk · 모아보기 작업창';
+  doc.head.replaceChildren();
+  const meta=doc.createElement('meta');meta.name='viewport';meta.content='width=device-width, initial-scale=1';doc.head.append(meta);
+  const title=doc.createElement('title');title.textContent='Design Desk · 모아보기 작업창';doc.head.append(title);
+  document.querySelectorAll('head style,head link[rel="stylesheet"]').forEach(style=>doc.head.append(style.cloneNode(true)));
+  doc.body.className='floating-desk';
+  doc.body.innerHTML='<header class="float-toolbar"><div><b>'+ (kind==='pip'?'항상 위 작업창':'별도 작업창')+' · <span data-float-count>0</span>개</b><small>원래 탭을 열어두면 선택·메모가 연결돼요.</small></div><div><button class="collection-action" data-return-main type="button">원래 페이지</button> <button class="collection-action" data-close-float type="button">닫기</button></div></header><main class="float-body"><details class="float-memo"><summary>이번 작업 메모</summary><textarea data-float-memo aria-label="이번 작업 메모" placeholder="작업 메모를 적어보세요"></textarea><span class="memo-status" role="status"></span></details><div id="floatItems"></div></main>';
+  doc.querySelector('[data-close-float]').addEventListener('click',()=>win.close());
+  doc.querySelector('[data-return-main]').addEventListener('click',()=>{document.querySelector('#tabs [data-tab="collection"]').click();window.focus();});
+  doc.querySelector('#floatItems').addEventListener('click',handleCollectionClick);
+  doc.body.addEventListener('input',e=>{handleFontInput(e);handleNoteInput(e);});
+  win.addEventListener('pagehide',()=>{if(floatWindow===win){floatWindow=null;document.querySelector('#floatStatus').textContent='작업창을 닫았어요. 선택과 메모는 이 탭에 그대로 남아 있어요.';}},{once:true});
+  document.querySelector('#floatStatus').textContent=kind==='pip'?'항상 위 PiP 작업창이 열려 있어요.':'별도 작업창이 열려 있어요. 일반 창은 항상 위 고정을 보장하지 않아요.';
+  renderFloating();
+ }
+ function openRegular(){
+  if(floatWindow&&!floatWindow.closed){floatWindow.focus();return;}
+  const win=window.open('','designGuideWorkDesk','popup=yes,width=560,height=760,resizable=yes,scrollbars=yes');
+  if(!win){document.querySelector('#floatStatus').textContent='작업창이 차단됐어요. 이 사이트의 팝업을 허용한 뒤 다시 눌러주세요.';return;}
+  setupFloating(win,'popup');
+ }
+ document.querySelector('#openRegularFloat').addEventListener('click',openRegular);
+ document.querySelector('#openFloat').addEventListener('click',async()=>{
+  if(floatWindow&&!floatWindow.closed){floatWindow.focus();return;}
+  if(!window.documentPictureInPicture?.requestWindow){openRegular();return;}
+  try{
+   const win=await window.documentPictureInPicture.requestWindow({width:560,height:760});
+   setupFloating(win,'pip');
+  }catch{
+   document.querySelector('#floatStatus').textContent='PiP 작업창을 열 수 없어요. 옆의 ‘일반 창으로’를 눌러주세요.';
+   document.querySelector('#openRegularFloat').focus();
+  }
  });
- document.querySelector('#collectionItems').addEventListener('input',e=>{
-  if(!e.target.matches('[data-item-note]'))return;
-  state.notes[e.target.dataset.itemNote]=e.target.value;
-  const ok=save();e.target.nextElementSibling.textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';
- });
- const memo=document.querySelector('#deskMemo');memo.value=state.memo;
- memo.addEventListener('input',()=>{state.memo=memo.value;const ok=save();document.querySelector('#deskMemoStatus').textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';});
+ window.addEventListener('pagehide',()=>{try{floatWindow?.close();}catch{}});
+
+ document.querySelector('#collectionItems').addEventListener('click',handleCollectionClick);
+ document.querySelector('#collectionItems').addEventListener('input',handleNoteInput);
+ document.addEventListener('input',handleFontInput);
+ const memo=document.querySelector('#deskMemo');memo.value=state.memo;memo.addEventListener('input',handleNoteInput);
+ previewText.addEventListener('input',()=>FONTS.forEach(f=>updateFontDisplays(f.name)));
  document.querySelector('#collectionTitle').tabIndex=-1;
  document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>{
   state.active=b.dataset.tab;save();
   if(b.dataset.tab==='collection')renderCollection();
  }));
+ registerDetails();
+ renderFonts(document.querySelector('#fontFilters .chip.active')?.dataset.f||'all');
  registerDynamic();
  ['fontGrid','pairList','paletteList','searchResults'].forEach(id=>{
   const target=document.getElementById(id);if(target)new MutationObserver(registerDynamic).observe(target,{childList:true});
