@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark" data-reading="normal">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -496,6 +496,122 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 @media(prefers-reduced-motion:reduce) {*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
+
+/* ===== Reading comfort + session collection ===== */
+body:has(#collection.active) .reading-dock {display:none}
+.top p,.lead,.guide-note,.note,.guide-intro p,.example-caption p,.collection-context {word-break:keep-all;overflow-wrap:anywhere}
+button:disabled {opacity:.5;cursor:default}
+:root {color-scheme:light}
+html[data-theme="dark"] {
+ color-scheme:dark;
+ --bg:#1B1D23;--surface:#252830;--surface-2:#2D303A;--surface-3:#373B47;
+ --border:#454957;--border-soft:rgba(222,225,238,.12);
+ --text:#E7E8EE;--text-dim:#BBC0CE;--accent:#C4AFF5;--accent-2:#B7A0EA;--accent-soft:#363044;
+ --shadow:none;--shadow-lg:0 6px 20px #0002;
+}
+main,.top-inner {max-width:1120px}
+body {font-size:17px;line-height:1.75}
+.top h1 {font-size:36px}
+.top p {max-width:65ch}
+.desk-meta {display:none}
+.reading-controls {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0 12px}
+.comfort-btn,.pick-button,.collection-action {
+ font:inherit;font-size:14px;font-weight:600;line-height:1.4;min-height:42px;
+ border:1px solid var(--border);border-radius:10px;padding:10px 14px;
+ background:var(--surface);color:var(--text);cursor:pointer;white-space:nowrap;
+}
+.comfort-btn:hover,.pick-button:hover,.collection-action:hover {border-color:var(--accent)}
+.comfort-btn[aria-pressed="true"],.pick-button[aria-pressed="true"] {background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.reading-help {font-size:15px!important;line-height:1.7;color:var(--text-dim);margin:12px 0 0!important}
+.reading-help b {color:var(--text)}
+.lead,.guide-intro p,#mobile .lead,#mobile .note {font-size:17px;line-height:1.8}
+.guide-note,.note,.example-caption p,.card .use,.pair .pb,.cheat li,.guide-banner p,#mobile .cheat p,#mobile .cheat li,#mobile .mobile-steps {font-size:16px;line-height:1.8}
+.guide-note,.note,.lead,.guide-intro p {max-width:72ch}
+.guide-intro h2 {font-size:30px}
+.guide-heading,.section-title,#mobile .section-title {font-size:21px;line-height:1.5}
+.guide-item {margin:36px 0;scroll-margin-top:24px}
+.guide-item-head {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.guide-item-head>.guide-heading,.guide-item-head>.section-title {margin:0!important;flex:1;min-width:0}
+.guide-item-head .pick-button {flex:none}
+.guide-item.is-picked>.guide-item-head {padding-bottom:12px;border-bottom:1px solid var(--accent)}
+.guide-item:target {outline:2px solid var(--accent);outline-offset:8px;border-radius:10px}
+.pick-button {font-size:13px;min-height:40px;padding:9px 12px}
+.card-pick {margin-top:18px;display:flex;justify-content:flex-end}
+.reading-dock {position:fixed;bottom:24px;right:24px;z-index:80;display:flex;align-items:center;gap:10px;min-height:50px;padding:12px 20px;border-radius:99px;border:1px solid var(--accent);background:var(--accent);color:#211832;box-shadow:0 4px 24px #0003;font:inherit;font-weight:700;cursor:pointer}
+.reading-dock span {display:grid;place-items:center;min-width:25px;height:25px;padding:0 6px;border-radius:99px;background:#211832;color:#F1E9FF;font-size:13px}
+.collection-intro {display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.collection-intro .guide-intro {margin-bottom:16px}
+.session-note {background:var(--surface-2);border:1px solid var(--border);padding:16px 20px;border-radius:12px;font-size:15px;color:var(--text-dim);margin:0 0 24px}
+.notebook {background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin:24px 0}
+.notebook label {display:block;font-size:18px;font-weight:700;margin-bottom:8px}
+.notebook>p {font-size:15px;color:var(--text-dim);margin-bottom:14px}
+.notebook textarea,.item-notes textarea {display:block;width:100%;min-height:140px;resize:vertical;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:12px;padding:16px;font:inherit;font-size:17px;line-height:1.75}
+.notebook textarea::placeholder,.item-notes textarea::placeholder {color:var(--text-dim);opacity:.85}
+.memo-status {font-size:13px;color:var(--text-dim);display:block;min-height:24px;margin-top:8px}
+.collection-empty {border:1px dashed var(--border);border-radius:16px;padding:40px 24px;text-align:center;color:var(--text-dim)}
+.collection-empty h3 {font-size:20px;color:var(--text);margin-bottom:10px}
+.collection-entry {margin:28px 0 40px;border:1px solid var(--border);border-radius:20px;background:var(--surface);padding:28px}
+.collection-entry-head {display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}
+.collection-entry-head h3 {font-size:23px;line-height:1.5;word-break:keep-all}
+.collection-category {font-size:13px;color:var(--accent);display:block;margin-bottom:8px}
+.collection-entry-actions {display:flex;flex-wrap:wrap;gap:6px;flex:none}
+.collection-action {font-size:13px;min-height:38px;padding:8px 11px}
+.collection-context {font-size:15px;color:var(--text-dim);background:var(--surface-2);border-radius:10px;padding:16px;margin-bottom:24px}
+.collection-content>.guide-heading,.collection-content>.section-title {display:none}
+.collection-content .example-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.collection-content .card,.collection-content .pair,.collection-content .palette,.collection-content .cheat {box-shadow:none}
+.item-notes {margin-top:28px;padding-top:24px;border-top:1px dashed var(--border)}
+.item-notes label {display:block;font-size:16px;font-weight:700;margin-bottom:10px}
+.item-notes textarea {min-height:100px}
+#sessionLive {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+html[data-reading="large"] .guide-note,html[data-reading="large"] .note,html[data-reading="large"] .example-caption p,
+html[data-reading="large"] .card .use,html[data-reading="large"] .pair .pb,html[data-reading="large"] .cheat li,
+html[data-reading="large"] .guide-banner p,html[data-reading="large"] td,html[data-reading="large"] .lead,
+html[data-reading="large"] .guide-intro p,html[data-reading="large"] #mobile .note,html[data-reading="large"] #mobile .cheat p,
+html[data-reading="large"] .collection-context {font-size:19px!important;line-height:1.85}
+html[data-theme="dark"] .searchbar,html[data-theme="dark"] .preview-input,html[data-theme="dark"] .chip,
+html[data-theme="dark"] .mb-btn,html[data-theme="dark"] .modal input,html[data-theme="dark"] .modal textarea,
+html[data-theme="dark"] .modal select,html[data-theme="dark"] .weight-sheet,html[data-theme="dark"] .example-card,
+html[data-theme="dark"] .color-recipe,html[data-theme="dark"] .color-copy,html[data-theme="dark"] #mobile .mobile-checks label {background:var(--surface)}
+html[data-theme="dark"] .example-stage {background:#D8D7E0;color:#252333}
+html[data-theme="dark"] .example-stage.dark-stage {background:#171229}
+html[data-theme="dark"] .example-caption p,html[data-theme="dark"] .card .use,html[data-theme="dark"] .pair .pb,
+html[data-theme="dark"] .cheat li,html[data-theme="dark"] #mobile .cheat p,html[data-theme="dark"] #mobile .cheat li,
+html[data-theme="dark"] #mobile .mobile-steps {color:var(--text-dim)}
+html[data-theme="dark"] .top h1,html[data-theme="dark"] td b,html[data-theme="dark"] .card .use b,
+html[data-theme="dark"] .cheat li b,html[data-theme="dark"] .card .preview .big,html[data-theme="dark"] .pair .ph,
+html[data-theme="dark"] .mb-font .fbig,html[data-theme="dark"] .color-copy b {color:var(--text)}
+html[data-theme="dark"] .guide-banner,html[data-theme="dark"] .mobile-callout {background:#322B40;border-color:#65547D}
+html[data-theme="dark"] .guide-banner p,html[data-theme="dark"] .mobile-callout strong {color:#E2D4F8}
+html[data-theme="dark"] .guide-banner>span,html[data-theme="dark"] .sample-badge {background:#453952;color:#E0CDFB}
+html[data-theme="dark"] .guide-heading>span {background:#40364D;color:#DAC6F5}
+html[data-theme="dark"] th,html[data-theme="dark"] #mobile th {background:#30333D;color:#C5CAD6}
+html[data-theme="dark"] td code,html[data-theme="dark"] .note code {background:#383240;color:#DFCAF9}
+html[data-theme="dark"] .tag {background:#38333F;color:#D0C3E4}
+html[data-theme="dark"] .tag.np {background:#483A28;color:#F1D2A1}
+html[data-theme="dark"] .card .preview {background:#30323B}
+html[data-theme="dark"] .chip.active {background:#443651;color:#E0CDFB;border-color:#A58CC6}
+html[data-theme="dark"] .mb-btn.primary {background:#443651;color:#E0CDFB;border-color:#A58CC6}
+html[data-theme="dark"] .palette .info .desc {color:var(--text-dim)}
+html[data-theme="dark"] nav.tabs button.active {color:#211832;background:#C4AFF5}
+html[data-theme="dark"] mark {background:#574C2C;color:#FFF2B4}
+html[data-theme="dark"] .toast {background:#C4AFF5;color:#211832}
+html[data-theme="light"] .reading-dock {color:#fff}
+html[data-theme="light"] .reading-dock span {background:#fff;color:#4C2A94}
+@media(max-width:760px) {
+ .top h1 {font-size:30px}
+ .guide-intro h2 {font-size:26px}
+ .guide-item-head {align-items:flex-start;gap:10px;flex-wrap:wrap}
+ .guide-item-head>.guide-heading,.guide-item-head>.section-title {flex-basis:220px}
+ .collection-intro,.collection-entry-head {flex-direction:column;gap:12px}
+ .collection-entry {padding:20px;margin-top:24px}
+ .collection-content .example-grid {grid-template-columns:1fr}
+ .reading-dock {right:16px;bottom:16px;font-size:15px;min-height:48px;padding:10px 16px}
+ .notebook {padding:20px}
+ .guide-heading,.section-title,#mobile .section-title {font-size:20px}
+ .desk-footer {padding-bottom:90px}
+}
+
 </style>
 </head>
 <body>
@@ -509,7 +625,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
       <input id="search" type="text" placeholder="기준 찾기 — 예: 그림자, 굵기, 여백, 그라데이션…" autocomplete="off" />
       <button id="searchClear" title="지우기">✕</button>
     </div>
-    <nav class="tabs" id="tabs">
+    <div class="reading-controls"><button class="comfort-btn" id="themeToggle" type="button" aria-pressed="true">화면 · 어둡게</button><button class="comfort-btn" id="sizeToggle" type="button" aria-pressed="false">글자 크게</button><button class="comfort-btn" type="button" data-open-collection>모아보기 <span data-selection-count>0</span></button></div><p class="reading-help">필요한 항목에 <b>＋ 모아두기</b> → 모아보기에서 함께 읽고 메모하기.</p><nav class="tabs" id="tabs"><button data-tab="collection">모아보기 <span data-selection-count>0</span></button>
       <button data-tab="typeguide" class="active">글자 · 조합</button>
       <button data-tab="boxguide">여백 · 박스</button>
       <button data-tab="effectguide">그림자 · 글로우</button>
@@ -526,6 +642,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 </header>
 
 <main>
+<section class="panel" id="collection" aria-labelledby="collectionTitle">
+ <div class="collection-intro">
+  <div class="guide-intro"><span class="eyebrow">MY DESK / THIS SESSION</span><h2 id="collectionTitle">지금 필요한 가이드만 모아보기</h2><p>가이드의 ‘＋ 모아두기’를 누르면 선택한 순서대로 여기에 모입니다. 메모와 함께 작업 옆에 두세요.</p></div>
+  <button class="collection-action" id="clearSelection" type="button">선택 모두 해제</button>
+ </div>
+ <p class="session-note">선택과 메모는 <b>이 탭에서 새로고침해도 유지</b>돼요. 탭을 닫으면 보통 초기화되며, 브라우저의 탭 복구 시에는 돌아올 수 있어요.</p>
+ <div class="notebook"><label for="deskMemo">이번 작업 메모</label><p>선택한 항목이 없어도 자유롭게 적을 수 있어요.</p><textarea id="deskMemo" placeholder="예: 이번 배너는 제목 96px, 본문 48px. 그림자는 부드럽게…"></textarea><span class="memo-status" id="deskMemoStatus" role="status"></span></div>
+ <div id="collectionItems"></div>
+</section>
 
 <section class="panel guide-panel active" id="typeguide">
 <div class="guide-intro"><span class="eyebrow">01 / TYPOGRAPHY</span><h2>글자의 크기보다, 글자 사이의 관계</h2><p>굵기 · 크기 비율 · 정렬 · 줄바꿈을 비교해 보세요. 예시 수치는 정답이 아닌 작업 시작값입니다.</p></div>
@@ -822,7 +947,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="modal" id="modalBox"></div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast"></div><button type="button" class="reading-dock" data-open-collection aria-label="선택한 가이드 모아보기">모아보기 <span data-selection-count>0</span></button><div id="sessionLive" aria-live="polite"></div>
 
 <script>
 /* =========================================================
@@ -921,6 +1046,9 @@ document.querySelectorAll("#tabs button").forEach(btn => {
 let CUSTOM = "";
 
 // 폰트 카드 HTML (그리드 + 검색결과 공용)
+function fontWithFallback(font) {
+  return /,\s*(sans-serif|serif|system-ui)\s*$/i.test(font) ? font.replace(/,\s*(sans-serif|serif|system-ui)\s*$/i,", var(--ui-font), $1") : font+", var(--ui-font)";
+}
 function fontCardHTML(f, q) {
   q = q || "";
   const tagLabels = f.cat.map(c => ({ko:"한글",en:"영문",ui:"UI",brand:"브랜딩"}[c])).join(" · ");
@@ -929,11 +1057,11 @@ function fontCardHTML(f, q) {
   const npBadge = f.np ? `<span class="tag np">⬇ 다운로드형</span>` : "";
   const dlLink = f.dl ? ` <a href="${f.dl}" target="_blank" rel="noopener">폰트 받기 ↗</a>` : "";
   const npNote = f.np ? `<div class="npnote">공개 웹폰트 없음 — 미리보기는 유사 세리프로 대체됩니다</div>` : "";
-  return `<div class="card${f.np?' isnp':''}">
+  return `<div data-pick-key="font-${FONTS.indexOf(f)}" data-pick-title="${esc(f.name)}" class="card${f.np?' isnp':''}">
     <div class="name">${q?mark(f.name,q):f.name}<span class="tags">${npBadge}<span class="tag">${tagLabels}</span></span></div>
-    <div class="preview" style="font-family:${f.font}">
+    <div class="preview" style="font-family:${fontWithFallback(f.font)}">
       <div class="big">${big}</div>
-      <div class="small" style="font-family:${f.font}">${small}</div>
+      <div class="small" style="font-family:${fontWithFallback(f.font)}">${small}</div>
     </div>${npNote}
     <div class="use">${q?mark(f.use,q):f.use}${dlLink}</div>
   </div>`;
@@ -958,6 +1086,7 @@ function renderPairs() {
   PAIRS.forEach(p => {
     const el = document.createElement("div");
     el.className = "pair";
+    el.dataset.pickKey="pair-"+PAIRS.indexOf(p); el.dataset.pickTitle=p.tag+" · "+p.h+" + "+p.b;
     el.innerHTML = `
       <div class="meta">
         <span><b>${p.tag}</b></span>
@@ -979,6 +1108,7 @@ function renderPalettes() {
     const sw = p.colors.map(c => `<div class="sw" style="background:${c}" data-hex="${c}"><span>${c}</span></div>`).join("");
     const el = document.createElement("div");
     el.className = "palette";
+    el.dataset.pickKey="palette-"+PALETTES.indexOf(p); el.dataset.pickTitle=p.name;
     el.innerHTML = `<div class="swatches">${sw}</div><div class="info"><div class="name">${p.name}</div><div class="desc">${p.desc}</div></div>`;
     list.appendChild(el);
   });
@@ -1098,7 +1228,7 @@ $("#searchClear").onclick = () => { searchInput.value=""; runSearch(""); searchI
 // 탭 클릭 시 검색 비우기
 document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", ()=>{ if(searchInput.value){ searchInput.value=""; searchBar.classList.remove("has-text"); }}));
 // 단축키: / 로 검색 포커스
-document.addEventListener("keydown", e => { if(e.key==="/" && document.activeElement!==searchInput && document.activeElement!==$("#previewText")){ e.preventDefault(); searchInput.focus(); }});
+document.addEventListener("keydown", e => { if(e.key==="/" && !document.activeElement?.matches("input, textarea, select, [contenteditable=true]")){ e.preventDefault(); searchInput.focus(); }});
 
 // 문구 미리보기 입력 → 폰트/조합/검색결과 전부 갱신
 const previewText = $("#previewText");
@@ -1246,6 +1376,181 @@ document.querySelectorAll('.panel > table').forEach(table=>{
  wrap.setAttribute('aria-label','디자인 기준 표 · 좁은 화면에서는 좌우 스크롤');
  table.before(wrap); wrap.appendChild(table);
 });
+</script>
+
+<script>
+/* Selected references and notes live in the current browser tab session. */
+(() => {
+ const SESSION_KEY='designref_work_session_v1';
+ const catalog=new Map();
+ let state={selected:[],snapshots:{},notes:{},memo:'',theme:'dark',large:false,active:'typeguide'};
+ try {
+  const raw=JSON.parse(sessionStorage.getItem(SESSION_KEY)||'null');
+  if(raw && Array.isArray(raw.selected)) {
+   state={...state,...raw};
+   state.selected=[...new Set(raw.selected.filter(x=>typeof x==='string'))];
+   state.snapshots=raw.snapshots&&typeof raw.snapshots==='object'?raw.snapshots:{};
+   state.notes=raw.notes&&typeof raw.notes==='object'?raw.notes:{};
+   state.memo=typeof raw.memo==='string'?raw.memo:'';
+  }
+ } catch {}
+ const live=document.querySelector('#sessionLive');
+ const announce=msg=>{live.textContent=msg;};
+ function save() {
+  try {sessionStorage.setItem(SESSION_KEY,JSON.stringify(state));return true;}
+  catch {announce('이 브라우저에서는 세션 저장을 사용할 수 없어요. 새로고침하면 선택과 메모가 사라질 수 있어요.');return false;}
+ }
+ function theme() {
+  document.documentElement.dataset.theme=state.theme==='light'?'light':'dark';
+  document.documentElement.dataset.reading=state.large?'large':'normal';
+  const t=document.querySelector('#themeToggle'),s=document.querySelector('#sizeToggle');
+  t.textContent=state.theme==='light'?'화면 · 밝게':'화면 · 어둡게';
+  t.setAttribute('aria-pressed',state.theme!=='light');
+  s.textContent=state.large?'글자 크게 · 켜짐':'글자 크게';
+  s.setAttribute('aria-pressed',!!state.large);
+ }
+ theme();
+ document.querySelector('#themeToggle').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';theme();save();});
+ document.querySelector('#sizeToggle').addEventListener('click',()=>{state.large=!state.large;theme();save();});
+ function panelName(id) {
+  const b=document.querySelector('#tabs button[data-tab="'+id+'"]');
+  return b?b.childNodes[0].textContent.trim():id;
+ }
+ function pickControl(key) {
+  const b=document.createElement('button');
+  b.type='button';b.className='pick-button';b.dataset.pick=key;
+  b.setAttribute('aria-pressed','false');return b;
+ }
+ function sectionTitle(heading) {
+  const c=heading.cloneNode(true);
+  if(c.classList.contains('guide-heading'))c.querySelector('span')?.remove();
+  return c.textContent.trim();
+ }
+ // Turn each static guide subsection into an independently selectable item.
+ document.querySelectorAll('main > .panel:not(#collection):not(#searchPanel)').forEach(panel=>{
+  const headings=[...panel.children].filter(e=>e.matches('.guide-heading,.section-title'));
+  headings.forEach((heading,index)=>{
+   const key=panel.id+'-'+index;
+   const wrapper=document.createElement('div');
+   wrapper.className='guide-item';wrapper.id='pick-'+key;
+   heading.before(wrapper);
+   const next=[];
+   let node=heading.nextElementSibling;
+   while(node && !node.matches('.guide-heading,.section-title')){next.push(node);node=node.nextElementSibling;}
+   const head=document.createElement('div');head.className='guide-item-head';
+   const label=sectionTitle(heading);
+   head.append(heading,pickControl(key));wrapper.append(head,...next);
+   catalog.set(key,{id:key,title:label,category:panelName(panel.id),panel:panel.id,element:wrapper,
+    context:panel.querySelector('.guide-banner')?.textContent.trim() || (panel.id==='mobile'?'1080×1080px SNS 원본 기준. 권장 시작값이며 실제 휴대폰 표시 크기에서 확인하세요.':panel.id==='spacing'?'웹 UI와 CSS px 기준. 이미지 원본 px와 구분해서 참고하세요.':'')});
+  });
+ });
+ // Cheatsheet cards also work as separate references.
+ document.querySelectorAll('#cheat .cheat').forEach((card,index)=>{
+  const key='cheat-card-'+index;card.id='pick-'+key;
+  const line=document.createElement('div');line.className='card-pick';line.append(pickControl(key));card.append(line);
+  catalog.set(key,{id:key,title:card.querySelector('h3').textContent,category:'치트시트',panel:'cheat',element:card,context:'치트시트의 일반 시작값입니다. SNS 이미지 원본 크기는 모바일 가독성 가이드를 함께 참고하세요.'});
+ });
+ function registerDynamic() {
+  document.querySelectorAll('#fontGrid [data-pick-key],#pairList [data-pick-key],#paletteList [data-pick-key],#searchResults [data-pick-key]').forEach(card=>{
+   const key=card.dataset.pickKey;
+   const panel=key.startsWith('font-')?'fonts':key.startsWith('pair-')?'pairs':'colors';
+   if(!card.querySelector('.card-pick')){
+    const line=document.createElement('div');line.className='card-pick';line.append(pickControl(key));card.append(line);
+   }
+   card.id='pick-'+key+(card.closest('#searchResults')?'-search':'');
+   const previous=catalog.get(key);
+   if(!card.closest('#searchResults')||!previous)catalog.set(key,{id:key,title:card.dataset.pickTitle,category:panelName(panel),panel,element:card,context:panel==='fonts'?'실제 제공 굵기와 사용 조건을 확인하세요. 미리보기는 웹폰트 로딩 여부에 따라 대체 글꼴로 표시될 수 있습니다.':''});
+  });
+  sync();
+ }
+ function snapshot(entry) {
+  const clone=entry.element.cloneNode(true);
+  clone.querySelectorAll('.guide-item-head,.card-pick,input,textarea,select,script').forEach(e=>e.remove());
+  clone.removeAttribute('id');
+  clone.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  clone.querySelectorAll('[for]').forEach(e=>e.removeAttribute('for'));
+  const html=entry.element.classList.contains('guide-item')?clone.innerHTML:clone.outerHTML;
+  return {id:entry.id,title:entry.title,category:entry.category,panel:entry.panel,context:entry.context,html};
+ }
+ function sync() {
+  document.querySelectorAll('[data-pick]').forEach(b=>{
+   const picked=state.selected.includes(b.dataset.pick);
+   b.textContent=picked?'✓ 모아둠':'＋ 모아두기';
+   b.setAttribute('aria-pressed',picked);
+   const title=catalog.get(b.dataset.pick)?.title||'항목';
+   b.setAttribute('aria-label',title+(picked?' 모아보기에서 제외':' 모아보기로 선택'));
+   b.closest('.guide-item')?.classList.toggle('is-picked',picked);
+  });
+  document.querySelectorAll('[data-selection-count]').forEach(e=>e.textContent=state.selected.length);
+  document.querySelectorAll('[data-open-collection]').forEach(e=>e.setAttribute('aria-label','선택한 가이드 '+state.selected.length+'개 모아보기'));
+  document.querySelector('#clearSelection').disabled=state.selected.length===0;
+ }
+ function renderCollection() {
+  const target=document.querySelector('#collectionItems');
+  if(!state.selected.length){
+   target.innerHTML='<div class="collection-empty"><h3>아직 모아둔 가이드가 없어요.</h3><p>각 항목의 ‘＋ 모아두기’를 누르세요.<br>선택한 순서대로 예시와 메모를 함께 볼 수 있어요.</p></div>';return;
+  }
+  target.innerHTML=state.selected.map((key,index)=>{
+   const s=state.snapshots[key]||(catalog.has(key)?snapshot(catalog.get(key)):null);
+   if(!s)return '';
+   const memoID='item-memo-'+index;
+   return '<article class="collection-entry"><div class="collection-entry-head"><div><span class="collection-category">'+esc(s.category)+'</span><h3>'+esc(s.title)+'</h3></div><div class="collection-entry-actions"><button class="collection-action" type="button" data-source="'+esc(key)+'">원문 보기</button><button class="collection-action" type="button" data-remove="'+esc(key)+'" aria-label="'+esc(s.title)+' 모아보기에서 제거">제거</button></div></div>'+
+    (s.context?'<p class="collection-context">'+esc(s.context)+'</p>':'')+
+    '<div class="collection-content">'+s.html+'</div><div class="item-notes"><label for="'+memoID+'">이 항목 메모</label><textarea id="'+memoID+'" data-item-note="'+esc(key)+'" placeholder="내 작업에 적용할 값이나 생각을 적어보세요.">'+esc(state.notes[key]||'')+'</textarea><span class="memo-status" role="status"></span></div></article>';
+  }).join('');
+ }
+ function toggle(key) {
+  if(state.selected.includes(key)){state.selected=state.selected.filter(x=>x!==key);announce('모아보기에서 제외했어요. 이 항목의 메모는 유지됩니다.');}
+  else {
+   const entry=catalog.get(key);if(!entry)return;
+   state.snapshots[key]=snapshot(entry);state.selected.push(key);announce(entry.title+' 항목을 모아두었어요.');
+  }
+  save();sync();renderCollection();
+ }
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-pick]');if(b)toggle(b.dataset.pick);
+ });
+ document.querySelectorAll('[data-open-collection]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelector('#tabs [data-tab="collection"]').click();
+ }));
+ document.querySelector('#clearSelection').addEventListener('click',()=>{
+  state.selected=[];save();sync();renderCollection();announce('선택을 모두 해제했어요. 작성한 메모는 유지돼요.');
+ });
+ document.querySelector('#collectionItems').addEventListener('click',async e=>{
+  const remove=e.target.closest('[data-remove]');if(remove){toggle(remove.dataset.remove);document.querySelector('#collectionTitle').focus({preventScroll:true});return;}
+  const source=e.target.closest('[data-source]');
+  if(source){
+   const key=source.dataset.source,s=state.snapshots[key];if(!s)return;
+   document.querySelector('#tabs [data-tab="'+s.panel+'"]')?.click();
+   if(key.startsWith('font-'))document.querySelector('#fontFilters [data-f="all"]').click();
+   requestAnimationFrame(()=>{
+    const target=document.getElementById('pick-'+key)||catalog.get(key)?.element;
+    if(target){target.scrollIntoView({behavior:'smooth',block:'start'});target.querySelector('[data-pick]')?.focus({preventScroll:true});}
+   });return;
+  }
+  const color=e.target.closest('[data-copy-color],.sw[data-hex]');
+  if(color){const value=color.dataset.copyColor||color.dataset.hex;try{await navigator.clipboard.writeText(value);toast('복사됨 · '+value);}catch{toast('색상값 · '+value);}}
+ });
+ document.querySelector('#collectionItems').addEventListener('input',e=>{
+  if(!e.target.matches('[data-item-note]'))return;
+  state.notes[e.target.dataset.itemNote]=e.target.value;
+  const ok=save();e.target.nextElementSibling.textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';
+ });
+ const memo=document.querySelector('#deskMemo');memo.value=state.memo;
+ memo.addEventListener('input',()=>{state.memo=memo.value;const ok=save();document.querySelector('#deskMemoStatus').textContent=ok?'이 탭에 임시 저장됨':'세션 저장을 사용할 수 없어요';});
+ document.querySelector('#collectionTitle').tabIndex=-1;
+ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>{
+  state.active=b.dataset.tab;save();
+  if(b.dataset.tab==='collection')renderCollection();
+ }));
+ registerDynamic();
+ ['fontGrid','pairList','paletteList','searchResults'].forEach(id=>{
+  const target=document.getElementById(id);if(target)new MutationObserver(registerDynamic).observe(target,{childList:true});
+ });
+ renderCollection();sync();
+ const initial=document.querySelector('#tabs [data-tab="'+state.active+'"]');
+ if(initial)initial.click();
+})();
 </script>
 </body>
 </html>
