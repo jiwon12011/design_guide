@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>디자인 레퍼런스 · 폰트 · 색상 · 자간/행간</title>
+<title>Design Desk · 작업 옆에 두는 디자인 가이드</title>
 
 <!-- 한글 폰트 (Pretendard, SUIT via jsDelivr) -->
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
@@ -317,32 +317,283 @@
     #mobile .mobile-callout strong { font-size:20px; }
   }
 
+
+/* ===== Design Desk · readable reference edition ===== */
+.nav-hint {display:none}
+@media(max-width:760px){.top p.nav-hint{display:block;font-size:12px;color:var(--text-dim);margin:6px 0 0}.guide-table::before,.mobile-table-wrap::before{content:"표는 좌우로 스크롤할 수 있어요 ↔";display:block;font-size:12px;color:var(--text-dim);padding:10px 16px;background:var(--surface-2);position:sticky;left:0}}
+:root {
+ --bg:#F7F7F2; --surface:#FFFFFF; --surface-2:#F3F2F8; --surface-3:#EAE8F2;
+ --border:#E0DFE8; --border-soft:rgba(43,38,64,.09);
+ --text:#252333; --text-dim:#686477; --accent:#6C4ACD; --accent-2:#9E7ADB;
+ --accent-soft:#EEE8FC; --radius:20px; --radius-sm:12px;
+ --shadow:0 2px 6px rgba(31,25,56,.025); --shadow-lg:0 8px 24px rgba(31,25,56,.07);
+}
+html {scroll-padding-top:24px}
+body {background:var(--bg); font-size:16px; line-height:1.65; letter-spacing:-.015em}
+::selection {background:#DDD1FA; color:#28203B}
+header.top {position:relative; padding:44px 32px 0; background:transparent; border:0; backdrop-filter:none}
+.top-inner,main {max-width:1224px}
+.top-inner {position:relative}
+.top h1 {font-size:clamp(30px,4vw,44px); line-height:1.15; letter-spacing:-.055em; color:var(--text); background:none; -webkit-text-fill-color:initial; font-weight:800}
+.top p {font-size:16px; max-width:700px; margin-top:12px; color:var(--text-dim)}
+.brand-kicker {display:flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.12em; color:var(--accent); margin-bottom:16px}
+.brand-kicker i {width:8px;height:8px;background:var(--accent);border-radius:50%}
+.desk-meta {position:absolute;right:0;top:4px;border:1px solid var(--border);border-radius:99px;font-size:13px;padding:7px 13px;color:var(--text-dim);background:#fff}
+.searchbar {max-width:600px; background:#fff; padding:13px 18px; border-radius:14px; margin-top:24px; gap:12px; box-shadow:var(--shadow)}
+.searchbar input {font-size:16px; min-width:0}
+.searchbar #searchClear {width:28px;height:28px;font-size:14px;flex:none}
+nav.tabs {flex-wrap:nowrap; overflow-x:auto; gap:6px; padding:16px 0 14px; margin-top:16px; border-bottom:1px solid var(--border); scrollbar-width:thin; scrollbar-color:#CFC8DE transparent}
+nav.tabs button {white-space:nowrap; flex:none; font-size:15px; border-radius:10px; padding:11px 16px; min-height:46px; color:var(--text-dim)}
+nav.tabs button.active {color:#fff;background:var(--accent);box-shadow:0 3px 8px #6c4acd20}
+nav.tabs button.active::after {display:none}
+nav.tabs button:hover:not(.active) {background:var(--surface-3);color:var(--text)}
+main {padding:32px 32px 100px}
+.panel {animation-duration:.18s; min-width:0}
+.lead {font-size:16px;margin-bottom:24px;color:var(--text-dim)}
+.section-title {font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.02em;text-transform:none;margin:36px 0 16px}
+.section-title.solo {font-size:20px}
+.grid {grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:20px}
+.card {padding:24px;box-shadow:var(--shadow)}
+.card::before {display:none}
+.card:hover,.palette:hover,.cheat:hover,.mb-item:hover {transform:none;border-color:#B7AACF;box-shadow:var(--shadow-lg)}
+.card .name {font-size:17px;align-items:flex-start}
+.card .tags {margin-left:0;flex-wrap:wrap}
+.tag {font-size:12px;color:#5C5472;background:#F0EDF6;padding:4px 8px}
+.tag.np {color:#805016;background:#FFF1D9}
+.card .preview {background:#F9F8FC;border-radius:12px;padding:20px 16px;margin:20px 0 16px}
+.card .preview .big {font-size:30px;color:var(--text);overflow-wrap:anywhere}
+.card .preview .small {font-size:15px;color:var(--text-dim)}
+.card .use,.npnote {font-size:14px;line-height:1.7}
+.card .use a {white-space:normal}
+.filters {gap:8px;margin-bottom:24px}
+.chip {font-size:14px;padding:9px 16px;min-height:42px;background:#fff}
+.chip.active {color:var(--accent);background:var(--accent-soft);border-color:#B7A4E5}
+.preview-input {background:#fff;padding:14px 16px;flex-wrap:wrap}
+.preview-input input {font-size:16px;min-width:120px}
+.preview-input button {font-size:14px;padding:8px 12px}
+.pair {padding:28px}
+.pair .meta {font-size:13px;gap:6px}
+.pair .ph {color:var(--text);line-height:1.3;overflow-wrap:anywhere}
+.pair .pb {color:#514B61;font-size:16px}
+.palette .info {padding:20px 24px}
+.palette .info .name {font-size:17px}
+.palette .info .desc {font-size:15px}
+.palette .swatches {height:130px}
+.palette .sw span {opacity:1;font-size:12px}
+table {font-size:15px;box-shadow:none;border:1px solid var(--border);border-radius:14px}
+th {font-size:13px;color:#62596F;background:#F3F1F8;letter-spacing:0;text-transform:none}
+th,td {padding:16px 18px}
+td b {color:var(--text)}
+td code,.note code {background:#F0ECF8;color:#6741B0;font-size:14px;white-space:normal;overflow-wrap:anywhere}
+.cheat-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
+.cheat {padding:24px}
+.cheat h3 {font-size:18px}
+.cheat li {font-size:15px;color:#514B61;gap:12px;flex-wrap:wrap}
+.cheat li b {color:var(--text);white-space:normal}
+.note {font-size:14px;line-height:1.75;color:var(--text-dim);margin-top:16px}
+a {color:var(--accent)}
+mark {background:#EEE2A9;color:#302924}
+.res-group h2 {font-size:15px;letter-spacing:0}
+.res-empty {font-size:16px}
+.mb-btn {font-size:14px;min-height:44px;padding:10px 16px;background:#fff}
+.mb-btn.primary {color:var(--accent);background:var(--accent-soft);border-color:#B7A4E5}
+.mb-font .fbig {color:var(--text)}
+.mb-font .fname {font-size:13px}
+.mb-text.note-tile,.mb-empty {font-size:15px}
+.mb-item .del {opacity:1;width:32px;height:32px;font-size:14px}
+.modal {padding:28px}
+.modal h3 {font-size:20px}
+.modal label {font-size:14px}
+.modal input,.modal textarea,.modal select {font-size:16px;background:#fff}
+.toast {background:var(--accent);font-size:15px}
+#mobile .lead,#mobile .note {color:var(--text-dim);font-size:16px}
+#mobile .section-title {color:var(--text);font-size:20px}
+#mobile .cheat p,#mobile .cheat li,#mobile .mobile-steps {color:#514B61}
+#mobile a {color:var(--accent)}
+.mobile-callout {background:#EEE8FC;border-color:#D0BFEF}
+.mobile-callout strong {color:#4C2A94}
+#mobile th {color:#62596F}
+#mobile .mobile-checks label {background:#fff;border:1px solid var(--border)}
+#mobile .mobile-steps li {margin:12px 0}
+.guide-intro {margin:0 0 28px;max-width:800px}
+.eyebrow {font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:800}
+.guide-intro h2 {font-size:clamp(26px,3vw,34px);line-height:1.3;letter-spacing:-.045em;margin:10px 0 12px;word-break:keep-all}
+.guide-intro p {font-size:16px;color:var(--text-dim);max-width:660px}
+.guide-banner {background:#EEE8FC;border:1px solid #DDD1F3;border-radius:16px;padding:20px 24px;display:flex;gap:20px;align-items:flex-start;margin:0 0 32px}
+.guide-banner>span {white-space:nowrap;font-size:13px;font-weight:700;color:#6843B4;background:#fff;border-radius:6px;padding:4px 9px}
+.guide-banner p {font-size:15px;color:#51426C}
+.text-link {border:0;background:transparent;padding:0;font:inherit;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:underline}
+.guide-heading {display:flex;gap:12px;align-items:center;font-size:21px;line-height:1.4;letter-spacing:-.025em;margin:48px 0 20px}
+.guide-heading>span {font-size:12px;letter-spacing:0;display:grid;place-items:center;width:28px;height:28px;flex:none;background:#EAE5F2;border-radius:8px;color:#6D5594}
+.example-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:20px}
+.example-card {background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;min-width:0}
+.example-stage {padding:28px 24px;min-height:202px;background:#F0EFF4;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.example-caption {padding:22px 24px}
+.example-caption h4 {font-size:17px;font-weight:700;margin:0 0 8px}
+.example-caption p {font-size:14px;color:var(--text-dim);line-height:1.75}
+.guide-note {font-size:15px;color:var(--text-dim);line-height:1.8;margin:18px 0 24px;max-width:850px}
+.guide-table {overflow-x:auto;border:1px solid var(--border);border-radius:16px;margin:24px 0;max-width:100%}
+.guide-table table {margin:0;border:0;border-radius:0;min-width:560px}
+.weight-sheet {border:1px solid var(--border);border-radius:20px;overflow:hidden;background:#fff}
+.weight-row {display:grid;grid-template-columns:210px 1fr;align-items:center;gap:24px;padding:24px 28px;border-bottom:1px solid var(--border)}
+.weight-row:last-child {border-bottom:0}
+.weight-row b {font-size:16px}
+.weight-row small {display:block;font-size:13px;color:var(--text-dim);margin-top:4px}
+.weight-row p {word-break:keep-all; font-size:28px;line-height:1.4;letter-spacing:-.04em}
+.type-sample {width:100%}
+.type-sample>span,.type-sample>b {word-break:keep-all;display:block;line-height:1.25;letter-spacing:-.045em}
+.type-sample>span {font-weight:800;color:#322B49}
+.type-sample>b {font-weight:600;color:#72658B;margin:8px 0 16px}
+.type-sample>p {font-size:16px;line-height:1.5;color:#625B70;word-break:keep-all}
+.align-sample {width:100%}
+.align-sample h4,.line-sample h4 {font-size:30px;line-height:1.3;letter-spacing:-.04em;margin:0 0 18px}
+.align-sample p {font-size:16px;color:#625B70;line-height:1.6;margin-bottom:18px}
+.align-sample>span {font-size:12px;color:#655476;border-top:1px solid #D9D2E4;display:block;padding-top:12px}
+.line-sample {width:100%}
+.line-sample.muted h4 {color:#756E82}
+.sample-badge {display:inline-block;font-size:12px;padding:3px 8px;color:#6C4ACD;background:#E6DDF6;border-radius:6px;margin-bottom:18px}
+.padding-demo {width:100%;border:1px dashed #A995D1;background:#fff;border-radius:10px;box-shadow:inset 0 0 0 8px #EEE8FC}
+.padding-demo b {font-size:18px;line-height:1.4;display:block;margin-bottom:8px}
+.padding-demo p {font-size:15px;color:#686477;line-height:1.6}
+.radius-demo {width:144px;height:104px;display:grid;place-items:center;background:#D9CEF1;color:#5F3D9E;font-size:40px;font-weight:600}
+.border-demo {width:100%;padding:32px 10px;border-style:solid;border-color:#9178B8;border-radius:12px;background:#fff;text-align:center;font-size:18px;font-weight:600}
+.shadow-demo {display:grid;place-items:center;width:120px;height:100px;background:white;border-radius:16px;color:#6C4ACD;font-size:38px;font-weight:700}
+.dark-stage {background:#171229}
+.glow-demo {font-family:var(--ui-font);font-size:40px;font-weight:800;letter-spacing:.02em;color:#F5F3FF}
+.outline-demo {font-size:70px;font-weight:800;line-height:1.2;color:#fff}
+.gradient-demo {width:100%;height:142px;border-radius:12px}
+.mono {font-family:ui-monospace,monospace;font-size:12px;overflow-wrap:anywhere}
+.color-recipes {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px}
+.color-recipe {background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.recipe-preview {padding:32px;min-height:264px}
+.recipe-preview>span:first-child {font-size:13px;font-weight:600}
+.recipe-preview h4 {font-size:32px;line-height:1.3;letter-spacing:-.045em;margin:16px 0 24px}
+.recipe-cta {display:inline-block;font-size:14px;border-radius:8px;padding:9px 14px;font-weight:700}
+.recipe-swatches {display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.color-copy {display:flex;align-items:center;gap:8px;text-align:left;border:1px solid var(--border);border-radius:10px;background:white;padding:8px 10px;cursor:pointer;font-family:inherit;flex:1;min-width:110px}
+.color-copy:hover {border-color:var(--accent)}
+.color-copy i {display:block;width:24px;height:32px;border-radius:5px;box-shadow:inset 0 0 0 1px #0001;flex:none}
+.color-copy span {font-size:12px;color:var(--text-dim)}
+.color-copy b {display:block;font-family:ui-monospace,monospace;font-size:12px;color:var(--text);margin-top:1px}
+.source-note {font-size:13px;color:var(--text-dim);margin:24px 0}
+.desk-footer {max-width:1160px;margin:0 auto;padding:0 32px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--text-dim)}
+.desk-footer span,.desk-footer a {padding-top:20px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible {outline:3px solid #9D82D4;outline-offset:4px}
+@media(max-width:760px) {
+ .desk-meta {display:none}
+ header.top {padding:28px 20px 0}
+ main {padding:24px 20px 70px}
+ .top h1 {font-size:34px}
+ .top p {font-size:15px}
+ .guide-banner {flex-direction:column;gap:12px;padding:20px}
+ .weight-row {grid-template-columns:1fr;gap:12px;padding:22px}
+ .weight-row p {font-size:20px}
+ .example-grid,.color-recipes {grid-template-columns:1fr}
+ .example-stage {min-height:210px}
+ .guide-heading {font-size:19px;margin-top:36px}
+ .pair {padding:24px}
+ .desk-footer {padding:0 20px 24px}
+}
+@media(prefers-reduced-motion:reduce) {*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
 
-<header class="top">
+<header class="top" id="pageTop">
   <div class="top-inner">
-    <h1>🎨 디자인 레퍼런스</h1>
-    <p>폰트 · 색상 · 자간/행간 · 모바일 가독성 · 무드보드를 매번 검색하지 않도록 정리해 둔 개인 작업 도구</p>
+    <div class="brand-kicker"><i></i> DESIGN DESK / REFERENCE LIBRARY</div><span class="desk-meta">나의 디자인 레퍼런스</span><h1>작업 옆에 두는 디자인 가이드<span style="color:var(--accent)">.</span></h1>
+    <p>글자부터 색과 효과까지. 필요한 기준을 찾고, 눈으로 비교하고, 내 작업에 맞게 조절하세요.</p>
     <div class="searchbar">
       <span class="ico">🔍</span>
-      <input id="search" type="text" placeholder="키워드 검색 — 예: 한글, 제목, 행간, 럭셔리, 블루, 자간…" autocomplete="off" />
+      <input id="search" type="text" placeholder="기준 찾기 — 예: 그림자, 굵기, 여백, 그라데이션…" autocomplete="off" />
       <button id="searchClear" title="지우기">✕</button>
     </div>
     <nav class="tabs" id="tabs">
-      <button data-tab="fonts" class="active">폰트</button>
+      <button data-tab="typeguide" class="active">글자 · 조합</button>
+      <button data-tab="boxguide">여백 · 박스</button>
+      <button data-tab="effectguide">그림자 · 글로우</button>
+      <button data-tab="gradientguide">그라데이션 · 배색</button>
+      <button data-tab="fonts">폰트 찾기</button>
       <button data-tab="pairs">폰트 조합</button>
       <button data-tab="colors">색상</button>
       <button data-tab="spacing">자간 · 행간</button>
       <button data-tab="mobile">모바일 가독성</button>
       <button data-tab="cheat">치트시트</button>
       <button data-tab="moodboard">무드보드</button>
-    </nav>
+    </nav><p class="nav-hint">탭을 좌우로 넘겨 더 보기 <span aria-hidden="true">↔</span></p>
   </div>
 </header>
 
 <main>
+
+<section class="panel guide-panel active" id="typeguide">
+<div class="guide-intro"><span class="eyebrow">01 / TYPOGRAPHY</span><h2>글자의 크기보다, 글자 사이의 관계</h2><p>굵기 · 크기 비율 · 정렬 · 줄바꿈을 비교해 보세요. 예시 수치는 정답이 아닌 작업 시작값입니다.</p></div>
+<div class="guide-banner"><span>단위 먼저 확인</span><p>이 탭의 예시는 <b>웹 CSS px</b> 기준입니다. 1080px 이미지가 360px 폭으로 표시된다면 원본에는 약 3배 값을 적용해 시작하세요. SNS 원본 기준은 <button class="text-link" data-jump="mobile">모바일 가독성 →</button></p></div>
+<h3 class="guide-heading"><span>A</span>굵기 — 같은 문장으로 비교하기</h3>
+<div class="weight-sheet"><div class="weight-row"><div><b>Regular</b><small>400 · 긴 설명 · 본문</small></div><p style="font-weight:400">좋아하는 순간을 더 선명하게</p></div><div class="weight-row"><div><b>Medium</b><small>500 · 짧은 안내 · 설명 강조</small></div><p style="font-weight:500">좋아하는 순간을 더 선명하게</p></div><div class="weight-row"><div><b>Semibold</b><small>600 · 소제목 · 이름 · 주요 조건</small></div><p style="font-weight:600">좋아하는 순간을 더 선명하게</p></div><div class="weight-row"><div><b>Bold</b><small>700 · 제목 · 핵심 메시지</small></div><p style="font-weight:700">좋아하는 순간을 더 선명하게</p></div></div>
+<p class="guide-note">본문은 400~500, 제목은 600~700부터 비교하세요. 글꼴마다 같은 weight도 다르게 보입니다. 작은 글씨를 무조건 굵게 만들면 글자 속공간이 좁아질 수 있어요. 선택한 폰트가 해당 굵기를 실제로 제공하는지도 확인하세요.</p>
+<h3 class="guide-heading"><span>B</span>크기 비율 — 한 번에 한 단계씩</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="type-sample"><span style="font-size:32px">좋아하는 순간</span><b style="font-size:23px">당신의 선택으로</b><p>지금, 가장 빛나는 무대에 투표하세요.</p></div></div><div class="example-caption"><h4>차분한 위계</h4><p>제목 / 소제목 / 본문 <b>32 / 23 / 16px</b><br>정보가 많은 안내 · 설명 중심 콘텐츠</p></div></article><article class="example-card"><div class="example-stage"><div class="type-sample"><span style="font-size:38px">좋아하는 순간</span><b style="font-size:28px">당신의 선택으로</b><p>지금, 가장 빛나는 무대에 투표하세요.</p></div></div><div class="example-caption"><h4>분명한 위계</h4><p>제목 / 소제목 / 본문 <b>38 / 28 / 16px</b><br>일반 배너 · 카드뉴스</p></div></article><article class="example-card"><div class="example-stage"><div class="type-sample"><span style="font-size:54px">좋아하는 순간</span><b style="font-size:36px">당신의 선택으로</b><p>지금, 가장 빛나는 무대에 투표하세요.</p></div></div><div class="example-caption"><h4>강한 위계</h4><p>제목 / 소제목 / 본문 <b>54 / 36 / 16px</b><br>짧은 프로모션 · 임팩트 제목</p></div></article></div>
+<p class="guide-note">비율은 연속된 크기 단계 사이의 관계를 말해요. 위 예시는 읽기 좋은 정수로 조정한 조합입니다. 제목을 무조건 크게 하기보다 본문과의 차이를 먼저 확인하세요.</p>
+<div class="guide-table" role="region" tabindex="0" aria-label="시작 조합 · 웹 표시 크기 · 1080px 원본 예시¹ 표"><table><thead><tr><th scope="col">시작 조합</th><th scope="col">웹 표시 크기</th><th scope="col">1080px 원본 예시¹</th></tr></thead><tbody><tr><td>차분하게</td><td>제목 32 / 소제목 23 / 본문 16px</td><td>96 / 69 / 48px</td></tr><tr><td>분명하게</td><td>제목 38 / 소제목 28 / 본문 16px</td><td>114 / 84 / 48px</td></tr><tr><td>강하게</td><td>제목 54 / 소제목 36 / 본문 16px</td><td>162 / 108 / 48px</td></tr></tbody></table></div>
+<p class="guide-note">¹ 이미지가 가로 360px로 표시되는 경우의 환산 예시입니다. 큰 타이틀 조합은 짧은 문구용이며, 공간이 좁다면 문구 길이와 줄 수부터 조절하세요.</p>
+<h3 class="guide-heading"><span>C</span>정렬 — 읽는 방향을 만들기</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="align-sample"><h4>가장 빛나는<br>목소리를 찾아서</h4><p>투표 기간과 참여 방법처럼<br>여러 줄로 읽는 설명에 적합해요.</p><span>자연스럽게 이어지는 읽기 흐름</span></div></div><div class="example-caption"><h4>왼쪽 정렬</h4><p>여러 줄 설명 · 목록 · 날짜 안내. 제목과 본문의 시작선을 맞추면 정돈돼요.</p></div></article><article class="example-card"><div class="example-stage"><div class="align-sample" style="text-align:center"><h4>가장 빛나는<br>목소리를 찾아서</h4><p>투표 기간과 참여 방법처럼<br>여러 줄로 읽는 설명에 적합해요.</p><span>자연스럽게 이어지는 읽기 흐름</span></div></div><div class="example-caption"><h4>가운데 정렬</h4><p>짧은 제목 · 초대장 · 키비주얼. 긴 설명문에서는 매 줄 시작점을 찾기 어려워질 수 있어요.</p></div></article></div>
+<h3 class="guide-heading"><span>D</span>줄바꿈 — 의미가 이어지는 위치에서</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="line-sample muted"><span class="sample-badge">의미가 갈라진 예</span><h4>가장 빛나는 목소<br>리를 찾아서</h4></div></div><div class="example-caption"><h4>피하고 싶은 끊김</h4><p>단어 중간이 잘리거나 조사만 다음 줄에 남으면 읽는 흐름이 끊겨요.</p></div></article><article class="example-card"><div class="example-stage"><div class="line-sample"><span class="sample-badge">권장 시작점</span><h4>가장 빛나는<br>목소리를 찾아서</h4></div></div><div class="example-caption"><h4>의미 단위로 나누기</h4><p>단어 · 구절 단위로 끊고, 마지막 줄에 한두 글자만 남지 않는지 확인하세요.</p></div></article></div>
+<p class="guide-note">줄을 맞추려고 글자를 가로로 찌그러뜨리거나 자간을 과하게 줄이지 마세요. 문구 정리 → 텍스트 상자 폭 → 글자 크기 순서로 조정하면 좋아요.</p>
+</section>
+<section class="panel guide-panel" id="boxguide">
+<div class="guide-intro"><span class="eyebrow">02 / SPACE & SHAPE</span><h2>여백과 박스에도 기준이 있어요</h2><p>같은 내용도 안쪽 여백 · 모서리 · 테두리의 조합에 따라 인상이 달라집니다.</p></div>
+<div class="guide-banner"><span>예시 기준</span><p>웹 CSS px · 카드 폭 약 280~340px 기준의 시작값입니다. 1080px 이미지에서는 실제 표시 폭에 맞춰 환산하세요.</p></div>
+<h3 class="guide-heading"><span>A</span>안쪽 여백 — 테두리와 내용 사이</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="padding-demo" style="padding:12px"><b>좋아하는 순간</b><p>내용과 테두리 사이의 공간을 비교해 보세요.</p></div></div><div class="example-caption"><h4>12px 패딩</h4><p>짧은 라벨처럼 작은 박스에. 설명 카드에서는 답답할 수 있어요.</p></div></article><article class="example-card"><div class="example-stage"><div class="padding-demo" style="padding:24px"><b>좋아하는 순간</b><p>내용과 테두리 사이의 공간을 비교해 보세요.</p></div></div><div class="example-caption"><h4>24px 패딩</h4><p>일반 카드의 시작값. 글자와 박스 사이에 숨 쉴 공간을 줘요.</p></div></article><article class="example-card"><div class="example-stage"><div class="padding-demo" style="padding:36px"><b>좋아하는 순간</b><p>내용과 테두리 사이의 공간을 비교해 보세요.</p></div></div><div class="example-caption"><h4>36px 패딩</h4><p>큰 카드 · 강조 영역에. 내용이 좁아지지 않는지 함께 확인해요.</p></div></article></div>
+<div class="guide-table" role="region" tabindex="0" aria-label="관계 · 웹 시작값 · 1080px 원본 예시¹ 표"><table><thead><tr><th scope="col">관계</th><th scope="col">웹 시작값</th><th scope="col">1080px 원본 예시¹</th></tr></thead><tbody><tr><td>라벨 내부 상하 / 좌우</td><td>6~8 / 12~16px</td><td>18~24 / 36~48px</td></tr><tr><td>카드 내부 여백</td><td>20~28px</td><td>60~84px</td></tr><tr><td>제목 ↔ 관련 설명</td><td>8~16px</td><td>24~48px</td></tr><tr><td>카드 ↔ 카드</td><td>16~24px</td><td>48~72px</td></tr><tr><td>서로 다른 섹션</td><td>40~64px</td><td>120~192px</td></tr></tbody></table></div>
+<p class="guide-note">¹ 가로 360px 표시 가정. 간격은 4 또는 8의 배수로 시작하면 정리하기 편하지만, 시각적으로 맞지 않으면 조정해도 됩니다. 관련된 내용 사이 간격은 다른 묶음 사이보다 작게 두세요.</p>
+<h3 class="guide-heading"><span>B</span>모서리 — 같은 크기로 둥글기만 비교</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="radius-demo" style="border-radius:0px">Aa</div></div><div class="example-caption"><h4>Radius 0px</h4><p>단정함 · 에디토리얼 · 강한 구조</p></div></article><article class="example-card"><div class="example-stage"><div class="radius-demo" style="border-radius:12px">Aa</div></div><div class="example-caption"><h4>Radius 12px</h4><p>부드럽지만 과하지 않은 일반 카드</p></div></article><article class="example-card"><div class="example-stage"><div class="radius-demo" style="border-radius:24px">Aa</div></div><div class="example-caption"><h4>Radius 24px</h4><p>친근함 · 부드러운 인상 · 넓은 카드</p></div></article></div>
+<p class="guide-note">같은 12px도 작은 버튼과 큰 카드에서 다르게 느껴져요. 바깥 카드와 안쪽 면이 나란히 휘어야 한다면, 안쪽 radius ≈ 바깥 radius − 사이 여백을 시작점으로 사용하세요. pill 형태는 짧은 라벨이나 버튼에 잘 맞아요.</p>
+<h3 class="guide-heading"><span>C</span>테두리 — 굵기만 바꿔보기</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="border-demo" style="border-width:1px">선의 존재감</div></div><div class="example-caption"><h4>1px 테두리</h4><p>가벼운 영역 구분. 낮은 대비의 선은 축소 후 사라질 수 있어요.</p></div></article><article class="example-card"><div class="example-stage"><div class="border-demo" style="border-width:2px">선의 존재감</div></div><div class="example-caption"><h4>2px 테두리</h4><p>선택 상태 · 강조 박스. 배경과의 대비도 함께 조절하세요.</p></div></article><article class="example-card"><div class="example-stage"><div class="border-demo" style="border-width:4px">선의 존재감</div></div><div class="example-caption"><h4>4px 테두리</h4><p>키치 · 그래픽 스타일. 작은 글씨보다 선이 강해지지 않게 확인하세요.</p></div></article></div>
+<h3 class="guide-heading"><span>D</span>빠르게 쓰는 박스 조합</h3>
+<div class="guide-table" role="region" tabindex="0" aria-label="스타일 · 모서리 / 내부 여백 / 테두리 · 어울리는 용도 표"><table><thead><tr><th scope="col">스타일</th><th scope="col">모서리 / 내부 여백 / 테두리</th><th scope="col">어울리는 용도</th></tr></thead><tbody><tr><td>정돈된 정보 카드</td><td>12 / 24 / 1px</td><td>설명 · 리스트 · 안내</td></tr><tr><td>부드러운 강조 카드</td><td>20 / 28 / 1px</td><td>혜택 · 소개 · 짧은 메시지</td></tr><tr><td>선명한 그래픽 박스</td><td>0~8 / 24 / 2px</td><td>강한 타이틀 · 키치한 배너</td></tr></tbody></table></div>
+<p class="guide-note">각 조합은 웹 기준 예시입니다. 모서리 · 테두리 · 그림자를 모두 강하게 주기보다, 형태를 구분할 주된 장치 하나부터 정하세요.</p>
+</section>
+<section class="panel guide-panel" id="effectguide">
+<div class="guide-intro"><span class="eyebrow">03 / SHADOW & GLOW</span><h2>효과는 감으로만 조절하지 않아도 돼요</h2><p>거리 · 블러 · 불투명도를 하나씩 바꾸면서 결과를 비교하세요. 수치는 웹 CSS 기준의 시각 예시입니다.</p></div>
+<h3 class="guide-heading"><span>A</span>설정값이 바꾸는 것</h3>
+<div class="guide-table" role="region" tabindex="0" aria-label="설정 · 값을 키우면 · 확인할 것 표"><table><thead><tr><th scope="col">설정</th><th scope="col">값을 키우면</th><th scope="col">확인할 것</th></tr></thead><tbody><tr><td>거리 (X / Y)</td><td>그림자가 원본에서 더 떨어져 보여요.</td><td>광원 방향 · 떠 있는 정도</td></tr><tr><td>블러 (Blur)</td><td>경계가 부드럽고 넓어져요.</td><td>덩어리가 흐려지지 않는지</td></tr><tr><td>불투명도 (Opacity)</td><td>그림자나 빛의 존재감이 강해져요.</td><td>내용보다 효과가 먼저 보이지 않는지</td></tr><tr><td>확산 (Spread)</td><td>블러 전 그림자 영역이 확장돼요.</td><td>CSS spread와 포토샵 spread는 단위·동작이 다르므로 직접 환산하지 않기</td></tr></tbody></table></div>
+<h3 class="guide-heading"><span>B</span>블러 비교 — 거리와 불투명도는 같게</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 8px 8px rgba(24,30,48,.18)">Aa</div></div><div class="example-caption"><h4>Blur 8px</h4><p>X 0 · Y 8 · Blur 8 · Spread 0px<br>검정 계열 · 불투명도 18%</p></div></article><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 8px 16px rgba(24,30,48,.18)">Aa</div></div><div class="example-caption"><h4>Blur 16px</h4><p>X 0 · Y 8 · Blur 16 · Spread 0px<br>검정 계열 · 불투명도 18%</p></div></article><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 8px 32px rgba(24,30,48,.18)">Aa</div></div><div class="example-caption"><h4>Blur 32px</h4><p>X 0 · Y 8 · Blur 32 · Spread 0px<br>검정 계열 · 불투명도 18%</p></div></article></div>
+<h3 class="guide-heading"><span>C</span>바로 비교하는 그림자 프리셋</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 2px 6px rgba(24,30,48,0.1)">Aa</div></div><div class="example-caption"><h4>가까운 그림자</h4><p>X 0 · Y 2 · Blur 6px · Opacity 10%<br>가벼운 카드 · 얇은 면의 분리</p></div></article><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 8px 24px rgba(24,30,48,0.12)">Aa</div></div><div class="example-caption"><h4>부드러운 그림자</h4><p>X 0 · Y 8 · Blur 24px · Opacity 12%<br>일반 카드 · 정보 박스</p></div></article><article class="example-card"><div class="example-stage"><div class="shadow-demo" style="box-shadow:0 16px 40px rgba(24,30,48,0.16)">Aa</div></div><div class="example-caption"><h4>떠 있는 그림자</h4><p>X 0 · Y 16 · Blur 40px · Opacity 16%<br>강조 카드 · 팝업 같은 깊이</p></div></article></div>
+<p class="guide-note">포토샵에서는 거리 · 각도 · 크기 · 스프레드가 함께 작용해요. 위 CSS 수치를 그대로 입력해 같은 결과가 나온다고 가정하지 말고, 방향과 부드러움을 참고하세요.</p>
+<h3 class="guide-heading"><span>D</span>글로우 — 같은 글자, 퍼짐만 비교</h3>
+<div class="example-grid glow-grid"><article class="example-card"><div class="example-stage dark-stage"><div class="glow-demo" style="text-shadow:0 0 8px rgba(167,139,250,.7)">VOCAL</div></div><div class="example-caption"><h4>Blur 8px</h4><p>글자 #F5F3FF · 빛 #A78BFA<br>불투명도 70% · 그림자 1개</p></div></article><article class="example-card"><div class="example-stage dark-stage"><div class="glow-demo" style="text-shadow:0 0 16px rgba(167,139,250,.7)">VOCAL</div></div><div class="example-caption"><h4>Blur 16px</h4><p>글자 #F5F3FF · 빛 #A78BFA<br>불투명도 70% · 그림자 1개</p></div></article><article class="example-card"><div class="example-stage dark-stage"><div class="glow-demo" style="text-shadow:0 0 32px rgba(167,139,250,.7)">VOCAL</div></div><div class="example-caption"><h4>Blur 32px</h4><p>글자 #F5F3FF · 빛 #A78BFA<br>불투명도 70% · 그림자 1개</p></div></article></div>
+<p class="guide-note">글로우는 빛이 번지는 효과이고 입체적인 두께 자체를 만들지는 않아요. 입체감이 필요하면 면의 밝기 차이 · 하이라이트 · 방향 있는 그림자를 함께 설계하세요. 글자 원본은 선명하게 두고 빛만 뒤에서 퍼지게 하는 것이 출발점입니다.</p>
+<h3 class="guide-heading"><span>E</span>외곽선 — 원본 획을 살려두기</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="outline-demo" style="-webkit-text-stroke:1px #6D55CC;paint-order:stroke fill">Aa</div></div><div class="example-caption"><h4>바깥선 1px</h4><p>동일한 글자에서 바깥선 두께만 변경한 예시. 작은 한글에서는 속공간이 막히지 않는지 확인하세요.</p></div></article><article class="example-card"><div class="example-stage"><div class="outline-demo" style="-webkit-text-stroke:2px #6D55CC;paint-order:stroke fill">Aa</div></div><div class="example-caption"><h4>바깥선 2px</h4><p>동일한 글자에서 바깥선 두께만 변경한 예시. 작은 한글에서는 속공간이 막히지 않는지 확인하세요.</p></div></article><article class="example-card"><div class="example-stage"><div class="outline-demo" style="-webkit-text-stroke:3px #6D55CC;paint-order:stroke fill">Aa</div></div><div class="example-caption"><h4>바깥선 3px</h4><p>동일한 글자에서 바깥선 두께만 변경한 예시. 작은 한글에서는 속공간이 막히지 않는지 확인하세요.</p></div></article></div>
+<p class="guide-note">포토샵의 획은 바깥쪽 정렬부터 비교해 보세요. 가운데 · 안쪽 정렬은 원래 글자 면적을 덮을 수 있어요. CSS 예시와 앱의 획 렌더링은 다를 수 있습니다.</p>
+<p class="source-note">효과 원리 참고 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-shadow" target="_blank" rel="noopener noreferrer">MDN box-shadow ↗</a></p>
+</section>
+<section class="panel guide-panel" id="gradientguide">
+<div class="guide-intro"><span class="eyebrow">04 / GRADIENT & COLOR</span><h2>색을 고르고, 자연스럽게 연결하기</h2><p>그라데이션 방향과 색상 위치를 비교하고, 배경 · 글자 · 강조색 조합을 바로 참고하세요.</p></div>
+<h3 class="guide-heading"><span>A</span>색상 수 — 먼저 2~3개로 시작</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE,#8B5CF6)"></div></div><div class="example-caption"><h4>두 색으로 간결하게</h4><p>#EDE9FE 0% → #8B5CF6 100%<br>같은 색 계열에서 명도 차이로 시작해 보세요.</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE 0%,#C4B5FD 50%,#8B5CF6 100%)"></div></div><div class="example-caption"><h4>중간색으로 흐름 조절</h4><p>#EDE9FE 0% → #C4B5FD 50% → #8B5CF6 100%<br>같은 양 끝 색에서 중간색만 추가한 예시예요.</p></div></article></div>
+<h3 class="guide-heading"><span>B</span>방향 — 같은 두 색으로 비교</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE,#8B5CF6)"></div></div><div class="example-caption"><h4>가로 · CSS 90°</h4><p>왼쪽에서 오른쪽으로 흐르는 배경</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(135deg,#EDE9FE,#8B5CF6)"></div></div><div class="example-caption"><h4>대각선 · CSS 135°</h4><p>화면에 방향감과 움직임 더하기</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:radial-gradient(circle at 35% 35%,#EDE9FE,#8B5CF6)"></div></div><div class="example-caption"><h4>방사형 · Radial</h4><p>한 지점을 중심으로 빛이 퍼지는 느낌</p></div></article></div>
+<p class="guide-note">각도는 CSS 기준입니다. CSS 0°는 위쪽, 90°는 오른쪽으로 진행해요. 포토샵 · 피그마에서는 숫자보다 색상 핸들의 시작점과 끝점을 보고 방향을 맞추세요.</p>
+<h3 class="guide-heading"><span>C</span>색상 위치 — 밝은 영역의 비중 바꾸기</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE 0%,#EDE9FE 30%,#8B5CF6 100%)"></div></div><div class="example-caption"><h4>밝은 색 유지 30%</h4><p>밝은 색 0~30% · 진한 색 100%<br>색을 바꾸지 않고도 텍스트가 올라갈 공간을 조절할 수 있어요.</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE 0%,#EDE9FE 50%,#8B5CF6 100%)"></div></div><div class="example-caption"><h4>밝은 색 유지 50%</h4><p>밝은 색 0~50% · 진한 색 100%<br>색을 바꾸지 않고도 텍스트가 올라갈 공간을 조절할 수 있어요.</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(90deg,#EDE9FE 0%,#EDE9FE 70%,#8B5CF6 100%)"></div></div><div class="example-caption"><h4>밝은 색 유지 70%</h4><p>밝은 색 0~70% · 진한 색 100%<br>색을 바꾸지 않고도 텍스트가 올라갈 공간을 조절할 수 있어요.</p></div></article></div>
+<h3 class="guide-heading"><span>D</span>그라데이션 시작 조합</h3>
+<div class="example-grid"><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(135deg,#EDE9FE 0%,#C4B5FD 50%,#8B5CF6 100%)"></div></div><div class="example-caption"><h4>라벤더</h4><p>가까운 색상으로 부드러운 깊이<br><span class="mono">#EDE9FE 0% · #C4B5FD 50% · #8B5CF6 100%</span><br>방향 CSS 135°</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(135deg,#FFF1E6 0%,#FDBA9A 50%,#F47272 100%)"></div></div><div class="example-caption"><h4>코랄 피치</h4><p>따뜻하고 가벼운 인상<br><span class="mono">#FFF1E6 0% · #FDBA9A 50% · #F47272 100%</span><br>방향 CSS 135°</p></div></article><article class="example-card"><div class="example-stage"><div class="gradient-demo" style="background:linear-gradient(135deg,#0F172A 0%,#312E81 55%,#7C3AED 100%)"></div></div><div class="example-caption"><h4>미드나이트</h4><p>빛나는 오브젝트를 받치는 배경<br><span class="mono">#0F172A 0% · #312E81 55% · #7C3AED 100%</span><br>방향 CSS 135°</p></div></article></div>
+<p class="guide-note">원치 않는 탁한 중간색이 보이면 양 끝 색의 채도 · 명도를 조정하거나 중간색을 직접 지정하세요. 색을 많이 넣는 것보다 글자와 만나는 위치의 대비를 먼저 확인하는 것이 좋아요.</p>
+<h3 class="guide-heading"><span>E</span>배경 · 글자 · 강조색 조합</h3>
+<div class="color-recipes"><article class="color-recipe"><div class="recipe-preview" style="background:#F5F3FF;color:#25213B"><span style="color:#6D28D9">차분한 보라 강조</span><h4>좋아하는 순간을<br>더 선명하게</h4><span class="recipe-cta" style="background:#6D28D9;color:#F5F3FF">지금 참여하기</span></div><div class="example-caption"><h4>라벤더 & 잉크</h4><div class="recipe-swatches"><button class="color-copy" data-copy-color="#F5F3FF" aria-label="라벤더 & 잉크 배경 #F5F3FF 복사"><i style="background:#F5F3FF"></i><span>배경<b>#F5F3FF</b></span></button><button class="color-copy" data-copy-color="#25213B" aria-label="라벤더 & 잉크 글자 #25213B 복사"><i style="background:#25213B"></i><span>글자<b>#25213B</b></span></button><button class="color-copy" data-copy-color="#6D28D9" aria-label="라벤더 & 잉크 강조 #6D28D9 복사"><i style="background:#6D28D9"></i><span>강조<b>#6D28D9</b></span></button></div></div></article><article class="color-recipe"><div class="recipe-preview" style="background:#FFF7ED;color:#431407"><span style="color:#C2410C">따뜻한 이벤트 안내</span><h4>좋아하는 순간을<br>더 선명하게</h4><span class="recipe-cta" style="background:#C2410C;color:#FFF7ED">지금 참여하기</span></div><div class="example-caption"><h4>피치 & 코랄</h4><div class="recipe-swatches"><button class="color-copy" data-copy-color="#FFF7ED" aria-label="피치 & 코랄 배경 #FFF7ED 복사"><i style="background:#FFF7ED"></i><span>배경<b>#FFF7ED</b></span></button><button class="color-copy" data-copy-color="#431407" aria-label="피치 & 코랄 글자 #431407 복사"><i style="background:#431407"></i><span>글자<b>#431407</b></span></button><button class="color-copy" data-copy-color="#C2410C" aria-label="피치 & 코랄 강조 #C2410C 복사"><i style="background:#C2410C"></i><span>강조<b>#C2410C</b></span></button></div></div></article><article class="color-recipe"><div class="recipe-preview" style="background:#ECFDF5;color:#064E3B"><span style="color:#047857">맑은 정보 콘텐츠</span><h4>좋아하는 순간을<br>더 선명하게</h4><span class="recipe-cta" style="background:#047857;color:#ECFDF5">지금 참여하기</span></div><div class="example-caption"><h4>민트 & 딥그린</h4><div class="recipe-swatches"><button class="color-copy" data-copy-color="#ECFDF5" aria-label="민트 & 딥그린 배경 #ECFDF5 복사"><i style="background:#ECFDF5"></i><span>배경<b>#ECFDF5</b></span></button><button class="color-copy" data-copy-color="#064E3B" aria-label="민트 & 딥그린 글자 #064E3B 복사"><i style="background:#064E3B"></i><span>글자<b>#064E3B</b></span></button><button class="color-copy" data-copy-color="#047857" aria-label="민트 & 딥그린 강조 #047857 복사"><i style="background:#047857"></i><span>강조<b>#047857</b></span></button></div></div></article><article class="color-recipe"><div class="recipe-preview" style="background:#111827;color:#F9FAFB"><span style="color:#C4B5FD">어두운 배경의 선명한 포인트</span><h4>좋아하는 순간을<br>더 선명하게</h4><span class="recipe-cta" style="background:#C4B5FD;color:#111827">지금 참여하기</span></div><div class="example-caption"><h4>미드나이트 & 라일락</h4><div class="recipe-swatches"><button class="color-copy" data-copy-color="#111827" aria-label="미드나이트 & 라일락 배경 #111827 복사"><i style="background:#111827"></i><span>배경<b>#111827</b></span></button><button class="color-copy" data-copy-color="#F9FAFB" aria-label="미드나이트 & 라일락 글자 #F9FAFB 복사"><i style="background:#F9FAFB"></i><span>글자<b>#F9FAFB</b></span></button><button class="color-copy" data-copy-color="#C4B5FD" aria-label="미드나이트 & 라일락 강조 #C4B5FD 복사"><i style="background:#C4B5FD"></i><span>강조<b>#C4B5FD</b></span></button></div></div></article></div>
+<p class="guide-note">색상값을 누르면 복사됩니다. 배경 위 본문과 강조색 위 버튼 글자는 각각 대비를 확인해야 해요. 이 예시의 실제 색상 조합을 바꾸면 다시 확인하세요.</p>
+<p class="source-note">그라데이션 원리 참고 · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/gradient/linear-gradient" target="_blank" rel="noopener noreferrer">MDN linear-gradient ↗</a></p>
+</section>
   <!-- ================= 검색 결과 ================= -->
   <section class="panel" id="searchPanel">
     <p class="lead" id="searchSummary"></p>
@@ -350,7 +601,7 @@
   </section>
 
   <!-- ================= 폰트 ================= -->
-  <section class="panel active" id="fonts">
+  <section class="panel" id="fonts">
     <p class="lead">실제 폰트로 렌더링됩니다. 아래에 직접 문구를 넣어 모든 폰트로 비교해 보세요.</p>
     <div class="preview-input">
       <span class="ico">✍️</span>
@@ -369,7 +620,7 @@
 
   <!-- ================= 폰트 조합 ================= -->
   <section class="panel" id="pairs">
-    <p class="lead">제목 + 본문으로 검증된 조합. 실시간 미리보기.</p>
+    <p class="lead">제목 + 본문 추천 시작 조합. 실제 글꼴과 문구를 비교해 보세요.</p>
     <div id="pairList"></div>
   </section>
 
@@ -378,11 +629,11 @@
     <h2 class="section-title">배색 규칙</h2>
     <table>
       <tr><th>규칙</th><th>내용</th></tr>
-      <tr><td><b>60-30-10</b></td><td>주색 60%(배경·여백) · 보조 30% · 강조 10%(CTA·포인트). 비율만 지켜도 안정적.</td></tr>
+      <tr><td><b>60-30-10</b></td><td>주색 60%(배경·여백) · 보조 30% · 강조 10%(CTA·포인트). 배색 비중을 정리할 때 쓰는 시작점.</td></tr>
       <tr><td><b>뉴트럴 먼저</b></td><td>회색 스케일(배경/테두리/텍스트)을 먼저 정하고, 그 위에 컬러 1~2개만 얹기.</td></tr>
-      <tr><td><b>채도 톤 맞추기</b></td><td>한 팔레트 안에서 채도(saturation)를 비슷하게. 쨍한 색 + 탁한 색 섞으면 촌스러움.</td></tr>
+      <tr><td><b>채도 톤 맞추기</b></td><td>한 팔레트 안에서 채도(saturation)를 비슷하게. 채도 차이를 의도적으로 쓰되, 주인공이 될 색을 정하기.</td></tr>
       <tr><td><b>명도 대비</b></td><td>본문 텍스트/배경 대비 <code>4.5:1</code> 이상 (WCAG AA). 큰 텍스트는 <code>3:1</code>.</td></tr>
-      <tr><td><b>강조색은 하나</b></td><td>액션을 유도하는 색은 화면당 1개. 여러 개면 위계가 무너짐.</td></tr>
+      <tr><td><b>강조색은 하나</b></td><td>같은 역할의 액션은 같은 색으로. 강조색이 많으면 우선순위를 확인하기.</td></tr>
     </table>
     <h2 class="section-title">검증된 팔레트 <span style="font-weight:400;color:var(--text-dim);font-size:13px">— 색상 클릭 시 복사</span></h2>
     <div id="paletteList"></div>
@@ -423,14 +674,14 @@
     <h2 class="section-title">자간 (letter-spacing) — 상황별</h2>
     <table>
       <tr><th>상황</th><th>letter-spacing</th><th>메모</th></tr>
-      <tr><td><b>큰 제목 (한글)</b></td><td><code>-0.02em ~ -0.04em</code></td><td>한글 큰 글씨는 음수 자간이 거의 필수. 안 주면 헐렁해 보임.</td></tr>
+      <tr><td><b>큰 제목 (한글)</b></td><td><code>-0.02em ~ -0.04em</code></td><td>폰트 기본값에서 시작해 글자 사이가 넓어 보일 때 조금씩 좁히기.</td></tr>
       <tr><td><b>큰 제목 (영문)</b></td><td><code>-0.01em ~ -0.03em</code></td><td>디스플레이 폰트일수록 좁히기.</td></tr>
       <tr><td><b>본문</b></td><td><code>0 ~ -0.01em</code></td><td>거의 건드리지 않음. 폰트 기본값 신뢰.</td></tr>
-      <tr><td><b>대문자 영문 (라벨)</b></td><td><code>+0.05em ~ +0.1em</code></td><td>ALL CAPS는 자간을 벌려야 답답하지 않음.</td></tr>
+      <tr><td><b>대문자 영문 (라벨)</b></td><td><code>+0.05em ~ +0.1em</code></td><td>짧은 ALL CAPS 라벨은 자간을 조금 벌려 비교하기.</td></tr>
       <tr><td><b>작은 글씨 / 캡션</b></td><td><code>0 ~ +0.01em</code></td><td>작을수록 살짝 벌리면 또렷.</td></tr>
     </table>
-    <p class="note">핵심 직관: <b>글자가 커질수록 자간은 좁게(음수), 행간도 좁게.</b> 작아질수록 반대. 한글은 영문보다 행간 +0.1, 큰 제목 자간 음수를 더 강하게.</p>
-    <p class="note"><b>폰트·언어에 따라 다름:</b> 영문 디스플레이/제목은 자간을 <code>살짝 넓혀(+)</code> 시원하고 모던하게 가기도 합니다(특히 ALL CAPS·기하학 산세리프). 한글 큰 제목은 반대로 음수가 자연스러워요. <b>본문</b>은 자간 <code>0 ~ 5%</code> 기본/좁게, <b>행간 130% ~ 150%</b>(=1.3~1.5)로 가독성 확보가 안전한 기본값입니다.</p>
+    <p class="note">핵심 직관: <b>글자가 커질수록 자간은 좁게(음수), 행간도 좁게.</b> 작아질수록 반대. 한글은 영문보다 행간 +0.1, 자간은 글꼴의 기본 설계에 맞춰 조절.</p>
+    <p class="note"><b>폰트·언어에 따라 다름:</b> 영문 디스플레이/제목은 자간을 <code>살짝 넓혀(+)</code> 시원하고 모던하게 가기도 합니다(특히 ALL CAPS·기하학 산세리프). 한글 큰 제목은 반대로 음수가 자연스러워요. <b>본문</b>은 자간 <code>0%</code>에서 시작, <b>짧은 SNS 설명은 행간 140~160%</b>, 긴 한글 웹 본문은 160~180%부터 비교해 보세요.</p>
 
     <h2 class="section-title">크기 위계 (웹 UI · CSS px 기준)</h2>
     <table>
@@ -564,7 +815,7 @@
     </div>
     <div class="mb-board" id="mbBoard"></div>
   </section>
-</main>
+</main><footer class="desk-footer"><span>Design Desk · 수치는 시작점, 최종 판단은 실제 화면에서.</span><a href="#pageTop">맨 위로 ↑</a></footer>
 
 <!-- 무드보드 입력 모달 -->
 <div class="modal-bg" id="modalBg">
@@ -673,8 +924,8 @@ let CUSTOM = "";
 function fontCardHTML(f, q) {
   q = q || "";
   const tagLabels = f.cat.map(c => ({ko:"한글",en:"영문",ui:"UI",brand:"브랜딩"}[c])).join(" · ");
-  const big = CUSTOM || f.sample;
-  const small = CUSTOM || ("AaBb 12345 " + (f.cat.includes('ko') ? '안녕하세요' : 'Hello'));
+  const big = CUSTOM ? esc(CUSTOM) : f.sample;
+  const small = (CUSTOM && esc(CUSTOM)) || ("AaBb 12345 " + (f.cat.includes('ko') ? '안녕하세요' : 'Hello'));
   const npBadge = f.np ? `<span class="tag np">⬇ 다운로드형</span>` : "";
   const dlLink = f.dl ? ` <a href="${f.dl}" target="_blank" rel="noopener">폰트 받기 ↗</a>` : "";
   const npNote = f.np ? `<div class="npnote">공개 웹폰트 없음 — 미리보기는 유사 세리프로 대체됩니다</div>` : "";
@@ -714,7 +965,7 @@ function renderPairs() {
         <span>본문 · ${p.b}</span>
         <span style="color:var(--text-dim)">${p.note}</span>
       </div>
-      <div class="ph" style="font-family:${p.hf};font-weight:${p.hw}">${CUSTOM || p.ph}</div>
+      <div class="ph" style="font-family:${p.hf};font-weight:${p.hw}">${CUSTOM ? esc(CUSTOM) : p.ph}</div>
       <div class="pb" style="font-family:${p.bf};font-weight:${p.bw}">${p.pb}</div>`;
     list.appendChild(el);
   });
@@ -745,6 +996,16 @@ renderPalettes();
    ========================================================= */
 // 자간/행간/규칙 팁을 검색 가능한 항목으로 색인
 const TIPS = [
+  {"t":"글꼴 굵기 · weight","v":"본문 400~500 / 소제목·주요 조건 600 / 제목 700부터 비교. 같은 숫자도 글꼴별로 다르게 보임.","kw":"굵기 폰트 두께 regular medium semibold bold"},
+  {"t":"제목 · 소제목 · 본문 크기 조합","v":"웹 CSS px 예시: 차분 32/23/16, 분명 38/28/16, 강한 제목 54/36/16. 1080원본은 360표시 가정에서 약 3배.","kw":"크기 비율 위계 타이포 조합 스케일"},
+  {"t":"정렬 · 줄바꿈","v":"여러 줄 설명은 왼쪽 정렬부터, 짧은 제목은 가운데 정렬도 비교. 단어·구절 단위로 끊고 조사만 남지 않게.","kw":"정렬 왼쪽 가운데 줄바꿈 단어 한글"},
+  {"t":"박스 내부 여백","v":"웹 CSS px: 카드 패딩 20~28, 제목과 설명 8~16, 카드 간격 16~24, 섹션 간격 40~64. 관련 정보는 가깝게.","kw":"박스 여백 패딩 간격"},
+  {"t":"모서리 · 테두리","v":"웹 CSS px 시작 조합: 정보 카드 radius12/padding24/border1, 부드러운 강조 20/28/1, 그래픽 박스 0~8/24/2.","kw":"박스 모서리 라운드 둥글기 테두리 radius border"},
+  {"t":"그림자 설정","v":"거리=떨어짐, 블러=경계의 부드러움, 불투명도=강도. 웹 시작값 X0/Y8/Blur24px/Spread0/Opacity12%. 포토샵과 직접 환산하지 않음.","kw":"그림자 shadow 거리 블러 불투명도 spread"},
+  {"t":"글로우 · 외곽선","v":"선명한 원본 글자 뒤에서 빛만 퍼지게. 글로우만으로 입체 두께가 생기지는 않음. 외곽선은 작은 글자의 속공간을 확인.","kw":"글로우 빛 glow 외곽선 획 입체"},
+  {"t":"그라데이션 색상 · 위치 · 방향","v":"먼저 2~3색으로 시작. 중간색과 색상 위치로 밝은 영역 비중 조절. CSS90°=오른쪽,135°=대각선. 앱마다 각도 기준 확인.","kw":"그라데이션 gradient 방향 색상 위치 스톱"},
+  {"t":"배경 · 글자 · 강조색 조합","v":"라벤더 #F5F3FF/#25213B/#6D28D9, 피치 #FFF7ED/#431407/#C2410C, 민트 #ECFDF5/#064E3B/#047857, 밤 #111827/#F9FAFB/#C4B5FD.","kw":"배색 조합 팔레트 색상 배경 글자 강조색"},
+
   {"t":"SNS 모바일 글자 크기 (1080px 원본)","v":"타이틀 80~110px · 소제목 60~72px · 본문/기간/중요 조건 48~54px · 짧은 이름 42~48px · 보조 36~40px","kw":"모바일 가독성 sns 1080 투표 배너 카드뉴스 폰트크기 글자크기 사이즈"},
   {"t":"SNS 이미지와 웹 UI 단위 구분","v":"1080px 이미지가 360px 폭으로 표시되면 48px 글자는 약 16px. 원본 글자 크기 × 표시 폭 ÷ 원본 폭으로 계산.","kw":"모바일 가독성 환산 css px pt 축소 360"},
   {"t":"SNS 본문 굵기와 행간","v":"Regular~Medium · 본문 자간 0% · 여러 줄 본문 행간 140~160% · 두 줄 제목 110~125%. 본문 48px이면 행간 약 68~77px.","kw":"모바일 가독성 sns 행간 자간 굵기 폰트"},
@@ -789,6 +1050,7 @@ function runSearch(q) {
     return;
   }
   searchBar.classList.add("has-text");
+  document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-pressed","false"));
   document.querySelectorAll("#tabs button").forEach(b=>b.classList.remove("active"));
   document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
   $("#searchPanel").classList.add("active");
@@ -799,7 +1061,7 @@ function runSearch(q) {
   const tips  = TIPS.filter(t => norm(t.t+t.v+t.kw).includes(nq));
 
   const total = fonts.length+pairs.length+pals.length+tips.length;
-  summary.innerHTML = `"<b style="color:var(--text)">${q}</b>" 검색 결과 · <b style="color:var(--accent)">${total}</b>건`;
+  summary.innerHTML = `"<b style="color:var(--text)">${esc(q)}</b>" 검색 결과 · <b style="color:var(--accent)">${total}</b>건`;
 
   let html = "";
   if (fonts.length) {
@@ -957,6 +1219,33 @@ board.addEventListener("drop", e => {
 });
 
 renderMB();
+
+/* Reference navigation and color recipes */
+document.querySelectorAll('[data-jump]').forEach(button=>{
+ button.addEventListener('click',()=>document.querySelector('#tabs [data-tab="'+button.dataset.jump+'"]').click());
+});
+document.querySelectorAll('[data-copy-color]').forEach(button=>{
+ button.addEventListener('click',async()=>{
+   try { await navigator.clipboard.writeText(button.dataset.copyColor); toast('복사됨 · '+button.dataset.copyColor); }
+   catch { toast('색상값 · '+button.dataset.copyColor); }
+ });
+});
+document.querySelectorAll('#tabs button').forEach(button=>{
+ button.setAttribute('aria-pressed',button.classList.contains('active'));
+ button.addEventListener('click',()=>{
+  document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-pressed',b===button));
+  button.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});
+ });
+});
+
+</script>
+<script>
+document.querySelectorAll('.panel > table').forEach(table=>{
+ const wrap=document.createElement('div');
+ wrap.className='guide-table'; wrap.tabIndex=0; wrap.setAttribute('role','region');
+ wrap.setAttribute('aria-label','디자인 기준 표 · 좁은 화면에서는 좌우 스크롤');
+ table.before(wrap); wrap.appendChild(table);
+});
 </script>
 </body>
 </html>
