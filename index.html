@@ -290,6 +290,33 @@
   .modal .row { display: flex; gap: 10px; }
   .modal .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
   @media (max-width: 560px) { .mb-board { columns: 2 140px; } main { padding: 28px 16px 120px; } header.top { padding: 16px 16px 0; } }
+
+  /* 모바일 SNS 가독성 가이드 — 원본 이미지 px 기준 */
+  #mobile { font-size:16px; line-height:1.65; }
+  #mobile .lead, #mobile .note { font-size:15px; color:#c2c8d4; }
+  #mobile .section-title { color:var(--text); font-size:18px; letter-spacing:0; text-transform:none; }
+  .mobile-callout { padding:24px; margin-bottom:24px; border:1px solid var(--accent); border-radius:var(--radius); background:var(--accent-soft); }
+  .mobile-callout strong { display:block; font-size:22px; color:#fff; margin-bottom:8px; }
+  .mobile-table-wrap { max-width:100%; overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); }
+  #mobile table { min-width:540px; margin:0; font-size:15px; }
+  #mobile th { font-size:14px; color:#c2c8d4; }
+  #mobile td code { white-space:nowrap; }
+  #mobile .cheat-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); }
+  #mobile .cheat h3 { font-size:17px; }
+  #mobile .cheat p, #mobile .cheat li { font-size:15px; color:#c2c8d4; }
+  #mobile .cheat li { display:block; }
+  #mobile .mobile-steps { padding-left:24px; color:#c2c8d4; }
+  #mobile .mobile-steps li { margin:10px 0; }
+  .mobile-checks { display:grid; gap:12px; }
+  .mobile-checks label { display:flex; align-items:flex-start; gap:10px; padding:12px 16px; background:var(--surface-2); border-radius:var(--radius-sm); cursor:pointer; }
+  .mobile-checks input { margin-top:5px; width:18px; height:18px; accent-color:var(--accent); flex:none; }
+  #mobile a { color:#b9c0ff; text-decoration:underline; }
+  #mobile :focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+  @media(max-width:560px) {
+    #mobile .mobile-callout { padding:20px; }
+    #mobile .mobile-callout strong { font-size:20px; }
+  }
+
 </style>
 </head>
 <body>
@@ -297,7 +324,7 @@
 <header class="top">
   <div class="top-inner">
     <h1>🎨 디자인 레퍼런스</h1>
-    <p>폰트 · 색상 · 자간/행간 · 무드보드를 매번 검색하지 않도록 정리해 둔 개인 작업 도구</p>
+    <p>폰트 · 색상 · 자간/행간 · 모바일 가독성 · 무드보드를 매번 검색하지 않도록 정리해 둔 개인 작업 도구</p>
     <div class="searchbar">
       <span class="ico">🔍</span>
       <input id="search" type="text" placeholder="키워드 검색 — 예: 한글, 제목, 행간, 럭셔리, 블루, 자간…" autocomplete="off" />
@@ -308,6 +335,7 @@
       <button data-tab="pairs">폰트 조합</button>
       <button data-tab="colors">색상</button>
       <button data-tab="spacing">자간 · 행간</button>
+      <button data-tab="mobile">모바일 가독성</button>
       <button data-tab="cheat">치트시트</button>
       <button data-tab="moodboard">무드보드</button>
     </nav>
@@ -363,11 +391,11 @@
 
   <!-- ================= 자간 행간 ================= -->
   <section class="panel" id="spacing">
-    <h2 class="section-title">실전 규칙 · 웹 vs 모바일</h2>
+    <h2 class="section-title">실전 규칙 · 웹 UI의 데스크톱 vs 모바일 (CSS px)</h2>
     <table>
       <tr><th>항목</th><th>웹</th><th>모바일</th></tr>
       <tr><td><b>섹션 간격</b></td><td><code>120 ~ 200px</code></td><td><code>60 ~ 80px</code></td></tr>
-      <tr><td><b>본문 최소 크기</b></td><td><code>16px</code> · 더 작게는 14까지</td><td><code>16px</code> · 작게는 14, <b>10~20대 타겟이면 12도 가능</b></td></tr>
+      <tr><td><b>본문 최소 크기</b></td><td><code>16px</code> · 더 작게는 14까지</td><td><code>16px</code> · 작게는 14, <b>필수 본문은 16px부터 시작</b></td></tr>
       <tr><td><b>계층(용도)</b></td><td colspan="2">제목·본문·캡션의 크기 위계를 명확히 구분 (아래 표 참고)</td></tr>
     </table>
 
@@ -379,7 +407,7 @@
       <tr><td>30 ~ 40pt</td><td><code>120%</code></td><td></td></tr>
       <tr><td>40 ~ 50pt <span style="color:var(--text-dim)">(큰 제목)</span></td><td><code>110%</code></td><td style="color:var(--text-dim)">타이트하게</td></tr>
     </table>
-    <p class="note">규칙: <b>글자가 커질수록 행간 %는 내린다.</b> 작은 본문은 넉넉히(140%), 큰 제목은 타이트하게(110%). 화면에선 pt ≈ px로 봐도 무방.</p>
+    <p class="note">규칙: <b>글자가 커질수록 행간 %는 내린다.</b> 작은 본문은 넉넉히(140%), 큰 제목은 타이트하게(110%). 웹에서는 1pt = 약 1.333 CSS px입니다. 이미지 편집기의 pt는 문서 해상도에 따라 달라지므로 SNS 가이드는 px로 확인하세요.</p>
 
     <h2 class="section-title">행간 (line-height) — 상황별</h2>
     <table>
@@ -404,7 +432,7 @@
     <p class="note">핵심 직관: <b>글자가 커질수록 자간은 좁게(음수), 행간도 좁게.</b> 작아질수록 반대. 한글은 영문보다 행간 +0.1, 큰 제목 자간 음수를 더 강하게.</p>
     <p class="note"><b>폰트·언어에 따라 다름:</b> 영문 디스플레이/제목은 자간을 <code>살짝 넓혀(+)</code> 시원하고 모던하게 가기도 합니다(특히 ALL CAPS·기하학 산세리프). 한글 큰 제목은 반대로 음수가 자연스러워요. <b>본문</b>은 자간 <code>0 ~ 5%</code> 기본/좁게, <b>행간 130% ~ 150%</b>(=1.3~1.5)로 가독성 확보가 안전한 기본값입니다.</p>
 
-    <h2 class="section-title">크기 위계 (8px 스케일 기준)</h2>
+    <h2 class="section-title">크기 위계 (웹 UI · CSS px 기준)</h2>
     <table>
       <tr><th>역할</th><th>크기</th><th>weight</th></tr>
       <tr><td>Display</td><td><code>48–64px</code></td><td>700–800</td></tr>
@@ -415,6 +443,61 @@
       <tr><td>보조 텍스트</td><td><code>14px</code></td><td>400</td></tr>
       <tr><td>캡션</td><td><code>12–13px</code></td><td>400–500</td></tr>
     </table>
+  </section>
+
+
+  <!-- ================= 모바일 가독성 ================= -->
+  <section class="panel" id="mobile" aria-labelledby="mobileTitle">
+    <h2 class="section-title" id="mobileTitle">모바일에서 읽히는 SNS 디자인</h2>
+    <p class="lead">투표 배너 · 이벤트 이미지 · 카드뉴스를 위한 <b>1080×1080px 원본 기준</b> 가이드. 아래 수치는 공식 플랫폼 규정이 아닌 권장 시작값이며, 글꼴과 실제 표시 크기에 따라 조절합니다.</p>
+    <div class="mobile-callout">
+      <strong>본문 48~54px부터 시작하세요.</strong>
+      <p>1080px 이미지가 화면에서 가로 360px로 표시되면 48px 글자는 약 16px 크기가 됩니다. 웹 본문의 16 CSS px를 이미지 원본에 그대로 적용하지 마세요.</p>
+    </div>
+
+    <h3 class="section-title">01 · 글자 크기 — 모두 원본 px</h3>
+    <div class="mobile-table-wrap" role="region" tabindex="0" aria-label="용도 · 권장 크기 · 적용 예시 표 (좁은 화면에서는 좌우 스크롤)"><table><thead><tr><th scope="col">용도</th><th scope="col">권장 크기</th><th scope="col">적용 예시</th></tr></thead><tbody><tr><td><b>메인 타이틀</b></td><td><code>80~110px</code></td><td>투표명 · 이벤트명</td></tr><tr><td>소제목 · 핵심 메시지</td><td><code>60~72px</code></td><td>혜택 · 페이지별 제목</td></tr><tr><td><b>본문 설명</b></td><td><code>48~54px</code></td><td>참여 방법 · 콘텐츠 설명</td></tr><tr><td><b>기간 · 중요 조건</b></td><td><code>48~54px</code></td><td>마감 일시 · 참여 대상</td></tr><tr><td>짧은 인물명 · 라벨</td><td><code>42~48px</code></td><td>아이돌 이름 · 카테고리</td></tr><tr><td>보조 정보</td><td><code>36~40px</code></td><td>출처 · 간단한 부연에 제한적으로 사용</td></tr></tbody></table></div>
+    <p class="note"><b>기간과 참여 조건은 필수 정보입니다.</b> 하단에 있다는 이유로 줄이지 마세요. 36~40px은 읽지 않아도 핵심 내용을 이해할 수 있는 부연용이며, 같은 크기도 글꼴에 따라 다르게 보입니다.</p>
+
+    <h3 class="section-title">02 · 모바일에서는 얼마나 작아질까?</h3>
+    <div class="mobile-table-wrap" role="region" tabindex="0" aria-label="1080px 원본 글자 크기 · 가로 360px로 표시할 때 표 (좁은 화면에서는 좌우 스크롤)"><table><thead><tr><th scope="col">1080px 원본 글자 크기</th><th scope="col">가로 360px로 표시할 때</th></tr></thead><tbody><tr><td><code>60px</code></td><td>약 20px</td></tr><tr><td><code>48px</code></td><td>약 16px</td></tr><tr><td><code>36px</code></td><td>약 12px</td></tr><tr><td><code>30px</code></td><td>약 10px</td></tr></tbody></table></div>
+    <p class="note">계산: 원본 글자 크기 × (화면에서 이미지가 표시되는 폭 ÷ 원본 이미지 폭). 휴대폰의 물리 픽셀 해상도가 아닌 <b>실제 표시 폭</b> 기준입니다. 앱의 여백이나 미리보기 방식에 따라 달라집니다.</p>
+
+    <h3 class="section-title">03 · 글꼴 · 굵기 · 행간</h3>
+    <div class="mobile-table-wrap" role="region" tabindex="0" aria-label="항목 · 추천 시작값 표 (좁은 화면에서는 좌우 스크롤)"><table><thead><tr><th scope="col">항목</th><th scope="col">추천 시작값</th></tr></thead><tbody><tr><td>본문 굵기</td><td>Regular~Medium</td></tr><tr><td>짧은 핵심 정보</td><td>Medium~Semibold</td></tr><tr><td>타이틀 굵기</td><td>Bold 이상에서 디자인에 맞게</td></tr><tr><td>여러 줄 본문 행간</td><td><code>140~160%</code></td></tr><tr><td>두 줄 타이틀 행간</td><td><code>110~125%</code></td></tr><tr><td>본문 자간</td><td>우선 <code>0%</code>에서 시작</td></tr></tbody></table></div>
+    <p class="note">예: 본문 48px → 행간 약 68~77px. 이 행간은 짧은 SNS 설명용 시작값입니다. 긴 웹 본문과는 별도로 조절하세요. 포토샵에서는 글자 크기 단위를 <b>px</b>로 확인하고, pt 숫자를 그대로 옮기지 마세요.</p>
+    <div class="cheat-grid">
+      <article class="cheat"><h3>본문은 선명하게</h3><p>획이 너무 가늘거나 폭이 지나치게 좁은 글꼴은 피하고, 한글 획과 속공간이 축소 후에도 구분되는지 확인합니다.</p></article>
+      <article class="cheat"><h3>효과는 짧은 제목에</h3><p>장식적인 글꼴 · 입체 효과 · 글로우는 짧은 제목에 집중하세요. 작은 안내문까지 적용하면 획 경계가 흐려질 수 있습니다.</p></article>
+    </div>
+
+    <h3 class="section-title">04 · 여백과 정렬 — 1080px 원본 기준</h3>
+    <div class="mobile-table-wrap" role="region" tabindex="0" aria-label="위치 · 권장 여백 표 (좁은 화면에서는 좌우 스크롤)"><table><thead><tr><th scope="col">위치</th><th scope="col">권장 여백</th></tr></thead><tbody><tr><td>이미지 바깥쪽과 주요 내용 사이</td><td><code>64~80px</code></td></tr><tr><td>박스 테두리와 내부 글자 사이</td><td><code>32~48px</code></td></tr><tr><td>제목과 관련 설명 사이</td><td><code>24~40px</code></td></tr><tr><td>서로 다른 정보 묶음 사이</td><td><code>48~72px</code></td></tr></tbody></table></div>
+    <p class="note">디자인 여백의 시작값이며 플랫폼별 잘림 방지를 보장하는 안전영역은 아닙니다. 짧은 제목은 가운데 정렬도 좋지만, 여러 줄 설명은 <b>왼쪽 정렬</b>로 시작하면 읽는 흐름을 잡기 쉽습니다. 관련 정보는 가깝게, 다른 내용은 더 멀리 배치하세요.</p>
+
+    <h3 class="section-title">05 · 색과 배경 대비</h3>
+    <div class="cheat-grid">
+      <article class="cheat"><h3>본문 · 기간 · 조건은 4.5:1 이상</h3><p>WCAG AA는 일반 텍스트에 4.5:1 이상, 큰 텍스트에 3:1 이상의 명도 대비를 제시하며 이미지 속 텍스트에도 적용합니다. 큰 글자의 기준은 원본 숫자가 아닌 <b>실제 표시 크기</b>로 판단합니다.</p></article>
+      <article class="cheat"><h3>복잡한 배경과 글자를 분리</h3><p>연한 배경 위 연한 글씨, 홀로그램 · 사진 위 작은 글씨, 과한 글로우를 주의하세요. 글자 뒤에 단색 면이나 어두운 그라데이션을 깔면 대비를 확보하기 좋습니다.</p></article>
+    </div>
+    <p class="note">근거: <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">W3C · WCAG 2.2 명도 대비 안내 ↗</a>. 큰 텍스트의 기준은 약 24 CSS px 이상 또는 굵은 글자 약 18.7 CSS px 이상입니다.</p>
+
+    <h3 class="section-title">06 · 정보가 넘치면 이 순서로 조정</h3>
+    <p>읽는 순서를 <b>제목 → 핵심 내용 → 기간 · 참여 방법</b>으로 잡고, 크기 · 굵기 · 색에 차이를 줍니다.</p>
+    <ol class="mobile-steps"><li>중복 문장을 줄인다.</li><li>설명을 짧은 문장으로 나눈다.</li><li>다음 페이지나 게시글 본문으로 옮긴다.</li><li>마지막에 글자 크기를 소폭 조절한다.</li></ol>
+
+    <h3 class="section-title">07 · 내보내기 전 확인</h3>
+    <div class="mobile-checks">
+      <label><input type="checkbox">1080px 원본을 약 33%로 축소해도 제목과 핵심 정보가 읽힌다.</label>
+      <label><input type="checkbox">실제 휴대폰에서 확대 없이 기간과 참여 방법을 읽을 수 있다.</label>
+      <label><input type="checkbox">배경의 가장 밝거나 복잡한 부분에서도 글자가 선명하다.</label>
+      <label><input type="checkbox">게시될 화면의 미리보기에서 제목 · 얼굴 · 로고가 잘리지 않는다.</label>
+      <label><input type="checkbox">가장 중요한 내용이 먼저 보이고, 설명과 보조 정보가 구분된다.</label>
+    </div>
+    <p class="note">33% 보기는 빠른 근사 확인입니다. 실제 휴대폰 확인을 함께 하세요. 체크 상태는 새로고침하면 초기화됩니다.</p>
+
+    <h3 class="section-title">바로 쓰는 시작 프리셋</h3>
+    <div class="mobile-callout"><strong>96 / 64 / 48 / 72 / 72</strong><p>타이틀 <b>96px</b> · 소제목 <b>64px</b> · 본문 <b>48px</b> · 본문 행간 <b>72px</b> · 바깥 여백 <b>72px</b></p><p class="note">1080×1080px SNS 이미지용 시작값입니다. 이 페이지 자체의 UI 글자 크기를 뜻하지 않습니다.</p></div>
   </section>
 
   <!-- ================= 치트시트 ================= -->
@@ -662,6 +745,13 @@ renderPalettes();
    ========================================================= */
 // 자간/행간/규칙 팁을 검색 가능한 항목으로 색인
 const TIPS = [
+  {"t":"SNS 모바일 글자 크기 (1080px 원본)","v":"타이틀 80~110px · 소제목 60~72px · 본문/기간/중요 조건 48~54px · 짧은 이름 42~48px · 보조 36~40px","kw":"모바일 가독성 sns 1080 투표 배너 카드뉴스 폰트크기 글자크기 사이즈"},
+  {"t":"SNS 이미지와 웹 UI 단위 구분","v":"1080px 이미지가 360px 폭으로 표시되면 48px 글자는 약 16px. 원본 글자 크기 × 표시 폭 ÷ 원본 폭으로 계산.","kw":"모바일 가독성 환산 css px pt 축소 360"},
+  {"t":"SNS 본문 굵기와 행간","v":"Regular~Medium · 본문 자간 0% · 여러 줄 본문 행간 140~160% · 두 줄 제목 110~125%. 본문 48px이면 행간 약 68~77px.","kw":"모바일 가독성 sns 행간 자간 굵기 폰트"},
+  {"t":"SNS 여백 (1080px 원본)","v":"바깥 64~80px · 박스 내부 32~48px · 제목과 설명 24~40px · 정보 묶음 사이 48~72px. 플랫폼 안전영역과 별도.","kw":"모바일 가독성 sns 여백 레이아웃 정렬"},
+  {"t":"SNS 색과 배경 대비","v":"본문/기간/조건은 4.5:1 이상을 목표. 사진·홀로그램 뒤에는 단색 면이나 어두운 그라데이션으로 대비 확보.","kw":"모바일 가독성 sns 색상 배경 대비 글로우"},
+  {"t":"SNS 정보량과 내보내기 체크","v":"중복 문장 줄이기 → 짧게 나누기 → 페이지/게시글로 옮기기 → 크기 조절. 33% 축소 + 실제 휴대폰 확대 없이 검수.","kw":"모바일 가독성 sns 검수 체크리스트 정보량"},
+  {"t":"SNS 시작 프리셋 (1080×1080px)","v":"타이틀 96px · 소제목 64px · 본문 48px · 본문 행간 72px · 바깥 여백 72px. 공식 규정 아닌 권장 시작값.","kw":"모바일 가독성 sns 템플릿 프리셋 1080"},
   { t:"큰 제목 행간", v:"line-height 1.1 ~ 1.25 — 클수록 좁게", kw:"행간 제목 헤드라인 line-height" },
   { t:"본문 행간 (영문)", v:"line-height 1.5 ~ 1.6", kw:"행간 본문 영문 line-height 가독성" },
   { t:"본문 행간 (한글)", v:"line-height 1.6 ~ 1.8 — 영문보다 넓게", kw:"행간 본문 한글 line-height 가독성" },
@@ -673,7 +763,7 @@ const TIPS = [
   { t:"명도 대비 (가독성)", v:"본문 4.5:1 이상, 큰 텍스트 3:1 (WCAG AA)", kw:"색상 대비 contrast 가독성 접근성 wcag" },
   { t:"배색 비율", v:"60-30-10 — 주색60 / 보조30 / 강조10", kw:"색상 배색 비율 60 30 10 강조" },
   { t:"강조색 규칙", v:"액션 유도 색은 화면당 1개", kw:"색상 강조 cta 포인트" },
-  { t:"크기 위계", v:"Display 48-64 · H1 32-40 · H2 24-28 · 본문 16 · 캡션 12-13", kw:"크기 위계 사이즈 폰트크기 스케일 8px" },
+  { t:"크기 위계 (웹 UI · CSS px)", v:"Display 48-64 · H1 32-40 · H2 24-28 · 본문 16 · 캡션 12-13", kw:"크기 위계 사이즈 폰트크기 스케일 8px" },
   { t:"본문 한 줄 길이", v:"45–75자가 가장 읽기 좋음", kw:"본문 줄길이 가독성 레이아웃" },
 ];
 
@@ -730,7 +820,7 @@ function runSearch(q) {
       }).join("") + `</div>`;
   }
   if (tips.length) {
-    html += `<div class="res-group"><h2>자간 · 행간 · 규칙 ${tips.length}</h2><table><tr><th>항목</th><th>값</th></tr>` +
+    html += `<div class="res-group"><h2>가이드 · 자간 · 행간 · 규칙 ${tips.length}</h2><table><tr><th>항목</th><th>값</th></tr>` +
       tips.map(t=>`<tr><td><b>${mark(t.t,q)}</b></td><td>${mark(t.v,q)}</td></tr>`).join("") + `</table></div>`;
   }
   if (!total) html = `<div class="res-empty">"<b>${q}</b>"에 대한 결과가 없어요.<br>예: 한글 · 영문 · UI · 브랜딩 · 제목 · 행간 · 자간 · 블루 · 럭셔리</div>`;
